@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TokenFilter extends GenericFilterBean {
 
     public final static int BEARER_INDEX = 7;
-    public final static String key = "projetopsoft";
+    public final static String KEY = "projetopsoft";
 
 
     @Override
@@ -24,7 +24,7 @@ public class TokenFilter extends GenericFilterBean {
 
         String header = request.getHeader("Authorization");
 
-        if (header == null || header.startsWith("Bearer ")){
+        if (header == null || !header.startsWith("Bearer ")){
             ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token mal formado ou inexistente!");
             return;
         }
@@ -33,7 +33,7 @@ public class TokenFilter extends GenericFilterBean {
         String token = header.substring(BEARER_INDEX);
 
         try{
-            Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+            Jwts.parser().setSigningKey(KEY).parseClaimsJws(token).getBody();
 
         }catch(SignatureException | ExpiredJwtException | MalformedJwtException | PrematureJwtException | UnsupportedJwtException | IllegalArgumentException e){
             ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
