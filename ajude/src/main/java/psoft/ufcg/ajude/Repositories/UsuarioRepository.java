@@ -8,5 +8,7 @@ import java.io.Serializable;
 
 
 public interface UsuarioRepository <T, ID extends  Serializable> extends JpaRepository <Usuario, String> {
+
+
     Optional<Usuario> findByEmail(String email);
 }

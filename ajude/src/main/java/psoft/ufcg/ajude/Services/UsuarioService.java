@@ -15,7 +15,7 @@ public class UsuarioService {
         this.usuarioDAO = usuarioDAO;
     }
 
-    // Quando cadastrar é preciso enviar um email de boas vindas.
+    //TODO Quando cadastrar é preciso enviar um email de boas vindas.
 
     public Usuario adicionaUsuario(Usuario usuario){
         return this.usuarioDAO.save(usuario);
