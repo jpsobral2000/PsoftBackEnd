@@ -19,7 +19,7 @@ public class CampanhaController {
 
     @PostMapping("/campanha/cadastro")
     public ResponseEntity<Campanha> cadastraCampanha(@RequestBody Campanha campanha){
-        Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanha.getNome());
+        Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanhaService.transformaURL(campanha.getNome()));
 
         if(checkCampanha.isPresent())
             return new ResponseEntity<Campanha>(HttpStatus.CONFLICT);

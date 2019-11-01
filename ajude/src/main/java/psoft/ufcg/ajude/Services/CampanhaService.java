@@ -20,25 +20,17 @@ public class CampanhaService {
     }
 
     public Campanha adicionaCampanha(Campanha campanha){
+        campanha.setUrlCampanha(transformaURL(campanha.getNome()));
         return campanhaDAO.save(campanha);
     }
 
-    public Optional<Campanha> getCampanha(String nome){
-        List<Campanha> campanhas = this.campanhaDAO.findAll();
-        String nomeCampanha = "";
-
-        for(Campanha campanha : campanhas){
-            if(transformaURL(campanha.getNome()).equals(nome)){
-                nomeCampanha = campanha.getNome();
-            }
-        }
-
-        return campanhaDAO.findByNome(nomeCampanha);
+    public Optional<Campanha> getCampanha(String nomeUrl) {
+        return this.campanhaDAO.findById(nomeUrl);
     }
 
 
-    private String transformaURL(String nome){
 
+    public String transformaURL(String nome){
         String newNome = nome;
         String[] pontuacoes = new String[]{"´", "`", ".", ",", "~", "^", ";", ":", "_", "{", "}", "(", ")", "\\", "/", "|", "[",
                 "]", "!", "?", "@", "#", "$", "%", "¨", "&", "*", "-", "+", "=", "<" , ">"};

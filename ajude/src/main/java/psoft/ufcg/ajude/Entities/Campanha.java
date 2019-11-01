@@ -15,8 +15,8 @@ public class Campanha {
     @GeneratedValue
     private long identificador;
 
-    @Id
     private String nome;
+    @Id
     private String urlCampanha;
     private String descricao;
     private Date deadline;
@@ -24,7 +24,7 @@ public class Campanha {
     private Double meta;
     private String emailDono;
     private HashSet<String> likes;
-  //  private HashSet<Comentario> comentarios;
+    //  private HashSet<Comentario> comentarios;
 
     public Campanha(){
     }
