@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PsoftBackEnd.iml" filepath="$PROJECT_DIR$/.idea/PsoftBackEnd.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ajude/ajude.iml" filepath="$PROJECT_DIR$/ajude/ajude.iml" />
-    </modules>
-  </component>
-</project>

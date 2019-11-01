@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
+import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,22 +38,32 @@ public class CampanhaService {
 
 
     private String transformaURL(String nome){
-        String caracEspecial = "ÁÉÍÓÚáéíóúÂÊÎÔÛâêîôûÃÕÇçÃãÕõÀÈÌÒÙàèìòùÄËÏÖÜäëïöü";
-        String caracNormal   = "AEIOUaeiouAEIOUaeiouAOCcAaOoAEIOUaeiouAEIOUaeiou";
+
         String newNome = nome;
-        String[] pontuacoes = {"´", "`", ".", ",", "~", "^", ";", ":", "_", "{", "}", "(", ")", "\\", "/", "|", "[",
+        String[] pontuacoes = new String[]{"´", "`", ".", ",", "~", "^", ";", ":", "_", "{", "}", "(", ")", "\\", "/", "|", "[",
                 "]", "!", "?", "@", "#", "$", "%", "¨", "&", "*", "-", "+", "=", "<" , ">"};
 
         for(String pontuacao: pontuacoes){
-            newNome.replaceAll(pontuacao, " ");
+            if(newNome.contains(pontuacao))
+                newNome = newNome.replace(pontuacao, " ");
         }
 
-        for(int j = 0; j < caracEspecial.length(); j++){
-            newNome.replaceAll(caracEspecial.substring(j, j+1), caracNormal.substring(j, j+1));
+        newNome = Normalizer.normalize(newNome, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+
+
+        String[] names = newNome.split(" ");
+
+        newNome = "";
+        for(int i = 0; i < names.length; i++){
+            if(!names[i].isEmpty()){
+                if(i == 0)
+                    newNome += names[i];
+                else
+                    newNome += "-" + names[i];
+            }
         }
 
-        newNome = newNome.toLowerCase().trim().replaceAll(" ", "-");
-
+        newNome = newNome.toLowerCase();
 
         return newNome;
 
