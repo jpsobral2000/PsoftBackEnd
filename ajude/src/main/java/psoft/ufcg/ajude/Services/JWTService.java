@@ -1,11 +1,15 @@
 package psoft.ufcg.ajude.Services;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import org.springframework.stereotype.Service;
+import psoft.ufcg.ajude.Entities.Usuario;
 import psoft.ufcg.ajude.Filter.TokenFilter;
 
 import javax.servlet.ServletException;
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class JWTService {
@@ -21,6 +25,13 @@ public class JWTService {
     public boolean existeUsuario (String authorizationHeader) throws ServletException {
         String usuario = getUsuarioToken(authorizationHeader);
         return usuarioService.getUsuario(usuario).isPresent();
+    }
+
+    public boolean usuarioTemPermissao (String authorizationHeader, String email) throws ServletException {
+        String usuario = getUsuarioToken(authorizationHeader);
+        Optional<Usuario> optionalUsuario = usuarioService.getUsuario(usuario);
+
+        return optionalUsuario.isPresent() && optionalUsuario.get().getEmail().equals(email);
     }
 
     private String getUsuarioToken(String authorizationHeader) throws  ServletException{
@@ -47,4 +58,8 @@ public class JWTService {
         return usuario;
     }
 
+    public String geraToken(String email) {
+        return Jwts.builder().setSubject(email).signWith(SignatureAlgorithm.HS512, TOKEN_KEY)
+                .setExpiration(new Date(System.currentTimeMillis() + 2 * 60 * 1000)).compact();
+    }
 }
