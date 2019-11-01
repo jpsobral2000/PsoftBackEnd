@@ -38,6 +38,6 @@ public class UsuarioController {
         if(optionalUsuario.isPresent())
             return new ResponseEntity<Usuario>(HttpStatus.CONFLICT);
 
-        return new ResponseEntity<Usuario>(this.usuarioService.adicionaUsuario(usuario), HttpStatus.OK);
+        return new ResponseEntity<Usuario>(this.usuarioService.adicionaUsuario(usuario), HttpStatus.CREATED);
     }
 }
