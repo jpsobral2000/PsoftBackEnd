@@ -8,6 +8,7 @@ import psoft.ufcg.ajude.Services.CampanhaService;
 
 import java.util.Optional;
 
+
 @RestController
 public class CampanhaController {
 
@@ -19,10 +20,13 @@ public class CampanhaController {
 
     @PostMapping("/campanha/cadastro")
     public ResponseEntity<Campanha> cadastraCampanha(@RequestBody Campanha campanha){
-        Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanha.getNome());
+        Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanhaService.transformaURL(campanha.getNome()));
 
         if(checkCampanha.isPresent())
             return new ResponseEntity<Campanha>(HttpStatus.CONFLICT);
+
+        if(!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null || campanha.getEmailDono() == null)
+            return new ResponseEntity<Campanha>(HttpStatus.UNPROCESSABLE_ENTITY);
 
         return new ResponseEntity<Campanha>(campanhaService.adicionaCampanha(campanha), HttpStatus.CREATED);
     }

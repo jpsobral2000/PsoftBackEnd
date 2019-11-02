@@ -5,7 +5,7 @@ import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
 import java.text.Normalizer;
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -20,25 +20,25 @@ public class CampanhaService {
     }
 
     public Campanha adicionaCampanha(Campanha campanha){
+        campanha.setUrlCampanha(transformaURL(campanha.getNome()));
         return campanhaDAO.save(campanha);
     }
 
-    public Optional<Campanha> getCampanha(String nome){
-        List<Campanha> campanhas = this.campanhaDAO.findAll();
-        String nomeCampanha = "";
+    public boolean dataEhValida(Date data){
+        Date thisTime = new Date();
+        if(thisTime.before(data))
+            return true;
 
-        for(Campanha campanha : campanhas){
-            if(transformaURL(campanha.getNome()).equals(nome)){
-                nomeCampanha = campanha.getNome();
-            }
-        }
+        return false;
+    }
 
-        return campanhaDAO.findByNome(nomeCampanha);
+    public Optional<Campanha> getCampanha(String nomeUrl) {
+        return this.campanhaDAO.findById(nomeUrl);
     }
 
 
-    private String transformaURL(String nome){
 
+    public String transformaURL(String nome){
         String newNome = nome;
         String[] pontuacoes = new String[]{"´", "`", ".", ",", "~", "^", ";", ":", "_", "{", "}", "(", ")", "\\", "/", "|", "[",
                 "]", "!", "?", "@", "#", "$", "%", "¨", "&", "*", "-", "+", "=", "<" , ">"};

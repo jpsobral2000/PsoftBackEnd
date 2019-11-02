@@ -2,39 +2,41 @@ package psoft.ufcg.ajude.Entities;
 
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 
 @Entity
-public class Campanha {
+public class Campanha implements Serializable {
 
+    //TODO corrigir o input da deadLine atraves do JSON
 
-    @GeneratedValue
-    private long identificador;
+    private String nome;
 
     @Id
-    private String nome;
     private String urlCampanha;
     private String descricao;
+
+    @Temporal(TemporalType.DATE)
     private Date deadline;
+
     private StatusCampanha status;
     private Double meta;
     private String emailDono;
     private HashSet<String> likes;
-  //  private HashSet<Comentario> comentarios;
+    //  private HashSet<Comentario> comentarios;
+
+    public Campanha(String nome, String descricao, Date deadLine, String emailDono, StatusCampanha status){
+        this.nome = nome;
+        this.descricao = descricao;
+        this.deadline = deadLine;
+        this.emailDono = emailDono;
+        this.status = status;
+
+    }
 
     public Campanha(){
-    }
-
-    public long getIdentificador() {
-        return identificador;
-    }
-
-    public void setIdentificador(long identificador) {
-        this.identificador = identificador;
     }
 
     public String getNome() {

@@ -7,5 +7,4 @@ import java.io.Serializable;
 import java.util.Optional;
 
 public interface CampanhaRepository <T, ID extends Serializable> extends JpaRepository<Campanha, String> {
-    Optional<Campanha> findByNome(String nome);
 }
