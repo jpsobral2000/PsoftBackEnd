@@ -1,10 +1,15 @@
 package psoft.ufcg.ajude.Entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
+import org.springframework.context.annotation.Bean;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -12,19 +17,45 @@ import java.util.HashSet;
 public class Campanha {
 
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "campanha_sequence")
+    @SequenceGenerator(name = "campanha_sequence", sequenceName = "camp_seq")
     private long identificador;
 
     private String nome;
     @Id
     private String urlCampanha;
     private String descricao;
+
+    @JsonSerialize(as = Date.class)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date deadline;
+
     private StatusCampanha status;
     private Double meta;
     private String emailDono;
     private HashSet<String> likes;
     //  private HashSet<Comentario> comentarios;
+
+    private static final String dateFormat = "yyyy-MM-dd";
+    private static final String dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
+    @Bean
+    public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
+        return builder -> {
+            builder.simpleDateFormat(dateTimeFormat);
+            builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
+            builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat)));
+        };
+    }
+
+    public Campanha(String nome, String descricao, Date deadLine, String emailDono, StatusCampanha status){
+        this.nome = nome;
+        this.descricao = descricao;
+        this.deadline = deadLine;
+        this.emailDono = emailDono;
+        this.status = status;
+
+    }
 
     public Campanha(){
     }

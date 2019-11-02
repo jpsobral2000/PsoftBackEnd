@@ -5,7 +5,6 @@ import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
 import java.text.Normalizer;
-import java.util.List;
 import java.util.Optional;
 
 @Service
