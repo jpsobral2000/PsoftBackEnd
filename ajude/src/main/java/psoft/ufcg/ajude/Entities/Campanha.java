@@ -1,11 +1,10 @@
 package psoft.ufcg.ajude.Entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 
 @Entity
@@ -19,6 +18,7 @@ public class Campanha implements Serializable {
     private String urlCampanha;
     private String descricao;
 
+    @Temporal(TemporalType.DATE)
     private Date deadline;
 
     private StatusCampanha status;

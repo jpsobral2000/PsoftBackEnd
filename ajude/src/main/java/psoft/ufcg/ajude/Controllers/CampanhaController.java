@@ -25,6 +25,9 @@ public class CampanhaController {
         if(checkCampanha.isPresent())
             return new ResponseEntity<Campanha>(HttpStatus.CONFLICT);
 
+        if(!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null || campanha.getEmailDono() == null)
+            return new ResponseEntity<Campanha>(HttpStatus.UNPROCESSABLE_ENTITY);
+
         return new ResponseEntity<Campanha>(campanhaService.adicionaCampanha(campanha), HttpStatus.CREATED);
     }
 

@@ -5,6 +5,7 @@ import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
 import java.text.Normalizer;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,14 @@ public class CampanhaService {
     public Campanha adicionaCampanha(Campanha campanha){
         campanha.setUrlCampanha(transformaURL(campanha.getNome()));
         return campanhaDAO.save(campanha);
+    }
+
+    public boolean dataEhValida(Date data){
+        Date thisTime = new Date();
+        if(thisTime.before(data))
+            return true;
+
+        return false;
     }
 
     public Optional<Campanha> getCampanha(String nomeUrl) {
