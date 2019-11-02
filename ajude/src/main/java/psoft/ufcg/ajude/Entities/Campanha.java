@@ -1,33 +1,24 @@
 package psoft.ufcg.ajude.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
-import org.springframework.context.annotation.Bean;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
 import javax.persistence.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 import java.util.HashSet;
 
 @Entity
-public class Campanha {
+public class Campanha implements Serializable {
 
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "campanha_sequence")
-    @SequenceGenerator(name = "campanha_sequence", sequenceName = "camp_seq")
-    private long identificador;
+    //TODO corrigir o input da deadLine atraves do JSON
 
     private String nome;
+
     @Id
     private String urlCampanha;
     private String descricao;
 
-    @JsonSerialize(as = Date.class)
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date deadline;
 
     private StatusCampanha status;
@@ -35,18 +26,6 @@ public class Campanha {
     private String emailDono;
     private HashSet<String> likes;
     //  private HashSet<Comentario> comentarios;
-
-    private static final String dateFormat = "yyyy-MM-dd";
-    private static final String dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-
-    @Bean
-    public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
-        return builder -> {
-            builder.simpleDateFormat(dateTimeFormat);
-            builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
-            builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat)));
-        };
-    }
 
     public Campanha(String nome, String descricao, Date deadLine, String emailDono, StatusCampanha status){
         this.nome = nome;
@@ -58,14 +37,6 @@ public class Campanha {
     }
 
     public Campanha(){
-    }
-
-    public long getIdentificador() {
-        return identificador;
-    }
-
-    public void setIdentificador(long identificador) {
-        this.identificador = identificador;
     }
 
     public String getNome() {
