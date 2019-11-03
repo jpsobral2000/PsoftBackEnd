@@ -2,6 +2,7 @@ package psoft.ufcg.ajude.Services;
 
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.Entities.Campanha;
+import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
 import java.text.Normalizer;
@@ -22,6 +23,12 @@ public class CampanhaService {
     public Campanha adicionaCampanha(Campanha campanha){
         campanha.setUrlCampanha(transformaURL(campanha.getNome()));
         return campanhaDAO.save(campanha);
+    }
+
+    public Optional<Campanha> encerraCampanha(String urlCampanha){
+        this.getCampanha(urlCampanha).get().setStatus(StatusCampanha.ENCERRADA);
+
+        return this.getCampanha(urlCampanha);
     }
 
     public boolean dataEhValida(Date data){

@@ -54,7 +54,7 @@ public class CampanhaController {
 
         return  new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
     }
-
+    //TODO, Ao encerrar a campanha o Status da campanha muda no response body do put, mas nao muda no response body do get.
     @PutMapping("/campanha/encerrar")
     public ResponseEntity<Campanha> encerraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
         Optional<Campanha> optionalCampanha = campanhaService.getCampanha(campanha.getUrlCampanha());
@@ -68,9 +68,8 @@ public class CampanhaController {
         if(!jwtService.usuarioTemPermissao(authorizarion, campanha.getEmailDono()))
             return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
 
-        campanhaService.getCampanha(campanha.getUrlCampanha()).get().setStatus(StatusCampanha.ENCERRADA);
 
-        return new ResponseEntity<Campanha>(campanhaService.getCampanha(campanha.getUrlCampanha()).get(), HttpStatus.OK);
+        return new ResponseEntity<Campanha>(campanhaService.encerraCampanha(campanha.getUrlCampanha()).get() , HttpStatus.OK);
     }
 
 }

@@ -4,6 +4,7 @@
     <list default="true" id="d1a12f7b-f04d-4bb7-833f-394f4984b731" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajude/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ajude/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajude/src/main/java/psoft/ufcg/ajude/Services/CampanhaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ajude/src/main/java/psoft/ufcg/ajude/Services/CampanhaService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
