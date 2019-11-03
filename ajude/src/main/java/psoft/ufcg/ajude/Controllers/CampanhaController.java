@@ -1,9 +1,11 @@
 package psoft.ufcg.ajude.Controllers;
 
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psoft.ufcg.ajude.Entities.Campanha;
+import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Services.CampanhaService;
 import psoft.ufcg.ajude.Services.JWTService;
 
@@ -26,6 +28,7 @@ public class CampanhaController {
     public ResponseEntity<Campanha> cadastraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
         Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanhaService.transformaURL(campanha.getNome()));
 
+        campanha.setStatus(StatusCampanha.ATIVA);
 
         if(!jwtService.existeUsuario(authorization))
             return new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
@@ -50,6 +53,24 @@ public class CampanhaController {
             return new ResponseEntity<Campanha>(campanha.get(), HttpStatus.OK);
 
         return  new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/campanha/encerrar")
+    public ResponseEntity<Campanha> encerraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
+        Optional<Campanha> optionalCampanha = campanhaService.getCampanha(campanha.getUrlCampanha());
+
+        if(campanha.getEmailDono() == null || campanha.getUrlCampanha() == null)
+            return new ResponseEntity<Campanha>(HttpStatus.BAD_REQUEST);
+
+        if(!optionalCampanha.isPresent() || !jwtService.existeUsuario(authorizarion))
+            return new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
+
+        if(!jwtService.usuarioTemPermissao(authorizarion, campanha.getEmailDono()))
+            return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
+
+        campanhaService.getCampanha(campanha.getUrlCampanha()).get().setStatus(StatusCampanha.ENCERRADA);
+
+        return new ResponseEntity<Campanha>(campanhaService.getCampanha(campanha.getUrlCampanha()).get(), HttpStatus.OK);
     }
 
 }
