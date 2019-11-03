@@ -7,6 +7,7 @@ import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
 import java.text.Normalizer;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -76,6 +77,17 @@ public class CampanhaService {
 
         return newNome;
 
-
     }
+
+    public String pegaNomes (String substring) {
+        String result = "";
+        List<Campanha> campanhas = campanhaDAO.findAll();
+        for (Campanha campanha : campanhas) {
+            if (campanha.getNome().toLowerCase().contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)){
+                result += campanha.getNome() + "\n";
+            }
+        }
+        return result;
+    }
+
 }
