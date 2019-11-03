@@ -69,7 +69,7 @@ public class CampanhaController {
             return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
 
 
-        return new ResponseEntity<Campanha>(campanhaService.encerraCampanha(campanha.getUrlCampanha()).get() , HttpStatus.OK);
+        return new ResponseEntity<Campanha>(campanhaService.encerraCampanha(campanha.getUrlCampanha()) , HttpStatus.OK);
     }
 
 }

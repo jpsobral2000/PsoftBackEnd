@@ -25,10 +25,12 @@ public class CampanhaService {
         return campanhaDAO.save(campanha);
     }
 
-    public Optional<Campanha> encerraCampanha(String urlCampanha){
-        this.getCampanha(urlCampanha).get().setStatus(StatusCampanha.ENCERRADA);
+    public Campanha encerraCampanha(String urlCampanha){
+        Campanha campanha = this.getCampanha(urlCampanha).get();
+        campanha.setStatus(StatusCampanha.ENCERRADA);
 
-        return this.getCampanha(urlCampanha);
+
+        return  campanhaDAO.save(campanha);
     }
 
     public boolean dataEhValida(Date data){
