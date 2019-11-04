@@ -10,7 +10,9 @@ import psoft.ufcg.ajude.Services.CampanhaService;
 import psoft.ufcg.ajude.Services.JWTService;
 
 import javax.servlet.ServletException;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @RestController
@@ -54,7 +56,25 @@ public class CampanhaController {
 
         return  new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
     }
-    //TODO, Ao encerrar a campanha o Status da campanha muda no response body do put, mas nao muda no response body do get.
+
+    @GetMapping("/campanha/pesquisar/{nome}")
+    public ResponseEntity<List<Campanha>> pesquisaPorNome(@PathVariable String nome, @RequestParam(name = "estado", defaultValue = "true") Boolean estado, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
+        List<Campanha> campanha = campanhaService.pesquisarNome(nome, estado);
+
+
+        if (!jwtService.existeUsuario(authorizarion))
+            return new ResponseEntity<List<Campanha>>(HttpStatus.UNAUTHORIZED);
+
+
+
+        if(!campanha.isEmpty()) {
+            return new ResponseEntity<List<Campanha>>(campanha, HttpStatus.OK);
+        }
+
+
+        return  new ResponseEntity<List<Campanha>>(HttpStatus.NOT_FOUND);
+    }
+
     @PutMapping("/campanha/encerrar")
     public ResponseEntity<Campanha> encerraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
         Optional<Campanha> optionalCampanha = campanhaService.getCampanha(campanha.getUrlCampanha());
@@ -70,21 +90,6 @@ public class CampanhaController {
 
 
         return new ResponseEntity<Campanha>(campanhaService.encerraCampanha(campanha.getUrlCampanha()) , HttpStatus.OK);
-    }
-
-    @GetMapping("/campanha/pequisar")
-    public ResponseEntity<Campanha> pesquisarCampanhaPorNome(@PathVariable String nomePesauisa,@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException{
-        String pesquisados = campanhaService.pesquisarNome(nomePesauisa);
-
-        if (pesquisados == "")
-            return new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
-
-        if (!jwtService.usuarioTemPermissao(authorizarion, campanha.getEmailDono()))
-            return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
-
-        //nao ta reortnando a string dos pesquisados
-        return new ResponseEntity<Campanha>(HttpStatus.OK);
-
     }
 
 

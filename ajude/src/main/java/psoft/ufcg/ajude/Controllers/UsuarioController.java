@@ -30,6 +30,7 @@ public class UsuarioController {
         return new ResponseEntity<Usuario>(HttpStatus.NOT_FOUND);
 
     }
+
     //TODO verificar se o httpstatus usado é conflict.
     @PostMapping("/usuario/cadastro")
     public ResponseEntity<Usuario> cadastraUsuario(@RequestBody Usuario usuario){

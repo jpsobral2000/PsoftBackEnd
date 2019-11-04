@@ -6,9 +6,7 @@ import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
 
 import java.text.Normalizer;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CampanhaService {
@@ -80,12 +78,20 @@ public class CampanhaService {
     }
 
 
-    public String pesquisarNome (String substring) {
-        String result = "";
+    public List<Campanha> pesquisarNome (String substring, Boolean estado) {
+        List<Campanha> result = new ArrayList<>();
         List<Campanha> campanhas = campanhaDAO.findAll();
         for (Campanha campanha : campanhas) {
-            if (campanha.getNome().toLowerCase().contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)){
-                result += campanha.getNome() + "\n";
+
+            if(estado) {
+                if (campanha.getNome().toLowerCase().contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)) {
+                    result.add(campanha);
+                }
+            }
+            else{
+                if (campanha.getNome().toLowerCase().contains(substring.toLowerCase())) {
+                    result.add(campanha);
+                }
             }
         }
         return result;
