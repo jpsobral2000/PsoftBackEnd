@@ -72,4 +72,20 @@ public class CampanhaController {
         return new ResponseEntity<Campanha>(campanhaService.encerraCampanha(campanha.getUrlCampanha()) , HttpStatus.OK);
     }
 
+    @GetMapping("/campanha/pequisar")
+    public ResponseEntity<Campanha> pesquisarCampanhaPorNome(@PathVariable String nomePesauisa,@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException{
+        String pesquisados = campanhaService.pesquisarNome(nomePesauisa);
+
+        if (pesquisados == "")
+            return new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
+
+        if (!jwtService.usuarioTemPermissao(authorizarion, campanha.getEmailDono()))
+            return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
+
+        //nao ta reortnando a string dos pesquisados
+        return new ResponseEntity<Campanha>(HttpStatus.OK);
+
+    }
+
+
 }

@@ -79,7 +79,8 @@ public class CampanhaService {
 
     }
 
-    public String pegaNomes (String substring) {
+
+    public String pesquisarNome (String substring) {
         String result = "";
         List<Campanha> campanhas = campanhaDAO.findAll();
         for (Campanha campanha : campanhas) {
