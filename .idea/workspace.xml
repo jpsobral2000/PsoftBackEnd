@@ -1,142 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7230c545-16f5-4abd-baa5-fbac97491eae" name="Default Changelist" comment="">
+    <list default="true" id="a440ebd8-d1c0-4872-b267-c748a02211c2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dados.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/dados.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController$LoginResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Comentario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Doacao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Enum/StatusCampanha.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1283258743">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="properties" value="1" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Properties" value="1" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="80" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-      </list>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
         <option name="lookForNested" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="293" />
-    <option name="y" value="53" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572893884564" />
-  </component>
+  <component name="ProjectId" id="1TAOrG5sIhWPjZPojWq5gJlxVrE" />
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -174,79 +82,23 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7230c545-16f5-4abd-baa5-fbac97491eae" name="Default Changelist" comment="" />
-      <created>1572893354208</created>
+      <changelist id="a440ebd8-d1c0-4872-b267-c748a02211c2" name="Default Changelist" comment="" />
+      <created>1572899629814</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1572893354208</updated>
+      <updated>1572899629814</updated>
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24958494" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="80" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>10</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
