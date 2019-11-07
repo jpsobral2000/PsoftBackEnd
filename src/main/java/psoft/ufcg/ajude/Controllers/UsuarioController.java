@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psoft.ufcg.ajude.Entities.Usuario;
+import psoft.ufcg.ajude.Services.EmailService;
 import psoft.ufcg.ajude.Services.JWTService;
 import psoft.ufcg.ajude.Services.UsuarioService;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class UsuarioController {
     private UsuarioService usuarioService;
     private JWTService jwtService;
+    private EmailService emailService;
 
     public UsuarioController(UsuarioService usuarioService, JWTService  jwtService){
         this.usuarioService = usuarioService;
