@@ -34,7 +34,7 @@ public class JWTService {
         return optionalUsuario.isPresent() && optionalUsuario.get().getEmail().equals(email);
     }
 
-    private String getUsuarioToken(String authorizationHeader) throws  ServletException{
+    public String getUsuarioToken(String authorizationHeader) throws  ServletException{
 
         //Caso o authorizationHeader da requisição for null ou não começar com "Bearer " isso o torna inválido.
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")){

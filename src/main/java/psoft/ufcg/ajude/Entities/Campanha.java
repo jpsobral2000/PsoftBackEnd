@@ -1,21 +1,25 @@
 package psoft.ufcg.ajude.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.UniqueElements;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 
 @Entity
 public class Campanha implements Serializable {
 
-    //TODO corrigir o input da deadLine atraves do JSON
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long id;
 
     private String nome;
 
-    @Id
+
     private String urlCampanha;
+
     private String descricao;
 
     @Temporal(TemporalType.DATE)
@@ -23,18 +27,12 @@ public class Campanha implements Serializable {
 
     private StatusCampanha status;
     private Double meta;
-    private String emailDono;
-    private HashSet<String> likes;
-    //  private HashSet<Comentario> comentarios;
 
-    public Campanha(String nome, String descricao, Date deadLine, String emailDono, StatusCampanha status){
-        this.nome = nome;
-        this.descricao = descricao;
-        this.deadline = deadLine;
-        this.emailDono = emailDono;
-        this.status = status;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "idDono")
+    @JsonIgnore
+    private Usuario dono;
 
-    }
 
     public Campanha(){
     }
@@ -87,35 +85,19 @@ public class Campanha implements Serializable {
         this.meta = meta;
     }
 
-    public String getEmailDono() {
-        return emailDono;
+    public void setDono(Usuario dono) {
+        this.dono = dono;
     }
 
-    public void setEmailDono(String emailDono) {
-        this.emailDono = emailDono;
+    public Usuario getDono() {
+        return dono;
     }
 
-    public void adicionaLikes(String email) {
-        this.likes.add(email);
+    public void setId(long id) {
+        this.id = id;
     }
 
-//    public int getQuantidadeLikes(){
-//        return this.likes.size();
-//    }
-
-//    public void setComentarios(HashSet<Comentario> comentarios) {
-//        this.comentarios = comentarios;
-//    }
-
-    public void setLikes(HashSet<String> likes) {
-        this.likes = likes;
-    }
-
-//    public HashSet<Comentario> getComentarios() {
-//        return comentarios;
-//    }
-
-    public HashSet<String> getLikes() {
-        return likes;
+    public long getId() {
+        return id;
     }
 }

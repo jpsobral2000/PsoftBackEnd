@@ -14,12 +14,11 @@ import java.util.Optional;
 @RestController
 public class UsuarioController {
     private UsuarioService usuarioService;
-    private JWTService jwtService;
     private EmailService emailService;
 
-    public UsuarioController(UsuarioService usuarioService, JWTService  jwtService){
+    public UsuarioController(UsuarioService usuarioService, EmailService emailService){
+        this.emailService = emailService;
         this.usuarioService = usuarioService;
-        this.jwtService = jwtService;
     }
 
     @GetMapping("/usuario/{email}")
@@ -33,7 +32,6 @@ public class UsuarioController {
 
     }
 
-    //TODO verificar se o httpstatus usado é conflict.
     @PostMapping("/usuario/cadastro")
     public ResponseEntity<Usuario> cadastraUsuario(@RequestBody Usuario usuario){
         Optional<Usuario> optionalUsuario = this.usuarioService.getUsuario(usuario.getEmail());

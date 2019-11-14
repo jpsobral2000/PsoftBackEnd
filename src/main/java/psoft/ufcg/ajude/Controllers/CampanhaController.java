@@ -8,6 +8,7 @@ import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Services.CampanhaService;
 import psoft.ufcg.ajude.Services.JWTService;
+import psoft.ufcg.ajude.Services.UsuarioService;
 
 import javax.servlet.ServletException;
 import java.util.List;
@@ -30,21 +31,23 @@ public class CampanhaController {
     public ResponseEntity<Campanha> cadastraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
         Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanhaService.transformaURL(campanha.getNome()));
 
-        campanha.setStatus(StatusCampanha.ATIVA);
 
-        if(!jwtService.existeUsuario(authorization))
-            return new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
-
-        if(!jwtService.usuarioTemPermissao(authorization, campanha.getEmailDono()))
+        if(!jwtService.existeUsuario(authorization)) {
             return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
+        }
 
-        if(checkCampanha.isPresent())
+        if(checkCampanha.isPresent()) {
             return new ResponseEntity<Campanha>(HttpStatus.CONFLICT);
+        }
 
-        if(!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null || campanha.getEmailDono() == null)
+        if(!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null) {
             return new ResponseEntity<Campanha>(HttpStatus.UNPROCESSABLE_ENTITY);
+        }
 
-        return new ResponseEntity<Campanha>(campanhaService.adicionaCampanha(campanha), HttpStatus.CREATED);
+        campanha.setStatus(StatusCampanha.ATIVA);
+        String emailDono = jwtService.getUsuarioToken(authorization);
+
+        return new ResponseEntity<Campanha>(campanhaService.adicionaCampanha(campanha, emailDono), HttpStatus.CREATED);
     }
 
     @GetMapping("/campanha/{nome}")
@@ -59,12 +62,13 @@ public class CampanhaController {
 
     @GetMapping("/campanha/pesquisar/{nome}")
     public ResponseEntity<List<Campanha>> pesquisaPorNome(@PathVariable String nome, @RequestParam(name = "estado", defaultValue = "true") Boolean estado, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
-        List<Campanha> campanha = campanhaService.pesquisarNome(nome, estado);
 
 
-        if (!jwtService.existeUsuario(authorizarion))
+        if (!jwtService.existeUsuario(authorizarion)) {
             return new ResponseEntity<List<Campanha>>(HttpStatus.UNAUTHORIZED);
+        }
 
+        List<Campanha> campanha = campanhaService.pesquisarNome(nome, estado);
 
 
         if(!campanha.isEmpty()) {
@@ -73,23 +77,6 @@ public class CampanhaController {
 
 
         return  new ResponseEntity<List<Campanha>>(HttpStatus.NOT_FOUND);
-    }
-
-    @PutMapping("/campanha/encerrar")
-    public ResponseEntity<Campanha> encerraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
-        Optional<Campanha> optionalCampanha = campanhaService.getCampanha(campanha.getUrlCampanha());
-
-        if(campanha.getEmailDono() == null || campanha.getUrlCampanha() == null)
-            return new ResponseEntity<Campanha>(HttpStatus.BAD_REQUEST);
-
-        if(!optionalCampanha.isPresent() || !jwtService.existeUsuario(authorizarion))
-            return new ResponseEntity<Campanha>(HttpStatus.NOT_FOUND);
-
-        if(!jwtService.usuarioTemPermissao(authorizarion, campanha.getEmailDono()))
-            return new ResponseEntity<Campanha>(HttpStatus.UNAUTHORIZED);
-
-
-        return new ResponseEntity<Campanha>(campanhaService.encerraCampanha(campanha.getUrlCampanha()) , HttpStatus.OK);
     }
 
 

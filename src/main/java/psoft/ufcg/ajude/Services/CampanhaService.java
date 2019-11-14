@@ -2,8 +2,10 @@ package psoft.ufcg.ajude.Services;
 
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.Entities.Campanha;
+import psoft.ufcg.ajude.Entities.Usuario;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
+import psoft.ufcg.ajude.Repositories.UsuarioRepository;
 
 import java.text.Normalizer;
 import java.util.*;
@@ -11,25 +13,24 @@ import java.util.*;
 @Service
 public class CampanhaService {
 
-    private CampanhaRepository<Campanha, String> campanhaDAO;
+    private CampanhaRepository<Campanha, String> campanhaRepository;
+    private UsuarioRepository<Usuario, String> usuarioRepository;
 
 
-    public CampanhaService(CampanhaRepository<Campanha, String> campanhaDAO){
-        this.campanhaDAO = campanhaDAO;
+    public CampanhaService(CampanhaRepository<Campanha, String> campanhaRepository, UsuarioRepository<Usuario, String> usuarioRepository){
+        this.usuarioRepository = usuarioRepository;
+        this.campanhaRepository = campanhaRepository;
 
     }
 
-    public Campanha adicionaCampanha(Campanha campanha){
+    public Campanha adicionaCampanha(Campanha campanha, String emailDono){
         campanha.setUrlCampanha(transformaURL(campanha.getNome()));
-        return campanhaDAO.save(campanha);
-    }
+        Usuario dono = usuarioRepository.findByEmail(emailDono);
 
-    public Campanha encerraCampanha(String urlCampanha){
-        Campanha campanha = this.getCampanha(urlCampanha).get();
-        campanha.setStatus(StatusCampanha.ENCERRADA);
+        campanha.setDono(dono);
 
-
-        return  campanhaDAO.save(campanha);
+        campanhaRepository.save(campanha);
+        return campanha;
     }
 
     public boolean dataEhValida(Date data){
@@ -41,10 +42,12 @@ public class CampanhaService {
     }
 
     public Optional<Campanha> getCampanha(String nomeUrl) {
-        return this.campanhaDAO.findById(nomeUrl);
+        return this.campanhaRepository.findByUrlCampanha(nomeUrl);
     }
 
-
+    public Optional<Campanha> getCampanha(long id){
+        return  this.campanhaRepository.findById(id);
+    }
 
     public String transformaURL(String nome){
         String newNome = nome;
@@ -77,19 +80,20 @@ public class CampanhaService {
 
     }
 
-
     public List<Campanha> pesquisarNome (String substring, Boolean estado) {
+        substring = transformaURL(substring);
+
         List<Campanha> result = new ArrayList<>();
-        List<Campanha> campanhas = campanhaDAO.findAll();
+        List<Campanha> campanhas = campanhaRepository.findAll();
         for (Campanha campanha : campanhas) {
 
             if(estado) {
-                if (campanha.getNome().toLowerCase().contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)) {
+                if (transformaURL(campanha.getNome()).contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)) {
                     result.add(campanha);
                 }
             }
             else{
-                if (campanha.getNome().toLowerCase().contains(substring.toLowerCase())) {
+                if (transformaURL(campanha.getNome()).contains(substring.toLowerCase())) {
                     result.add(campanha);
                 }
             }
