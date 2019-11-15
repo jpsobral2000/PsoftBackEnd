@@ -1,7 +1,6 @@
 package psoft.ufcg.ajude.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.UniqueElements;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
 import javax.persistence.*;
@@ -30,7 +29,6 @@ public class Campanha implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idDono")
-    @JsonIgnore
     private Usuario dono;
 
 

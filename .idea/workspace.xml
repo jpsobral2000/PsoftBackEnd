@@ -2,37 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a440ebd8-d1c0-4872-b267-c748a02211c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados.mv.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/AjudeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/AjudeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dadoss.mv.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/UsuarioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Repositories/CampanhaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Repositories/CampanhaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Repositories/UsuarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/CampanhaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/CampanhaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/JWTService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/JWTService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/ajude.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/ajude.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/EmailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,6 +48,9 @@
     <option name="height" value="744" />
   </component>
   <component name="ProjectId" id="1TAOrG5sIhWPjZPojWq5gJlxVrE" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />

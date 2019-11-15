@@ -1,6 +1,7 @@
 package psoft.ufcg.ajude.Services;
 
 import org.springframework.stereotype.Service;
+import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Entities.Usuario;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
@@ -23,14 +24,51 @@ public class CampanhaService {
 
     }
 
-    public Campanha adicionaCampanha(Campanha campanha, String emailDono){
+    public CampanhaDTO modificaCampanha(CampanhaDTO campanhaDTO, String nome) {
+        Campanha campanha = campanhaRepository.findByUrlCampanha(nome).get();
+
+        if(campanhaDTO.getDescricao() != null)
+            campanha.setDescricao(campanhaDTO.getDescricao());
+
+        if(campanhaDTO.getDeadline() != null)
+            campanha.setDeadline(campanhaDTO.getDeadline());
+
+        if(campanhaDTO.getStatus() != null)
+            campanha.setStatus(campanhaDTO.getStatus());
+
+        if(campanhaDTO.getMeta() != null)
+            campanha.setMeta(campanhaDTO.getMeta());
+
+        campanhaRepository.save(campanha);
+
+        campanhaDTO = transformaParaDTO(campanha);
+
+        return campanhaDTO;
+    }
+
+    public CampanhaDTO transformaParaDTO(Campanha campanha){
+        CampanhaDTO campanhaDTO = new CampanhaDTO();
+
+        campanhaDTO.setNome(campanha.getNome());
+        campanhaDTO.setDescricao(campanha.getDescricao());
+        campanhaDTO.setDeadline(campanha.getDeadline());
+        campanhaDTO.setStatus(campanha.getStatus());
+        campanhaDTO.setMeta(campanha.getMeta());
+        campanhaDTO.getDono().setPrimeiroNome(campanha.getDono().getPrimeiroNome());
+        campanhaDTO.getDono().setSegundoNome(campanha.getDono().getSegundoNome());
+        campanhaDTO.getDono().setEmail(campanha.getDono().getEmail());
+
+        return campanhaDTO;
+    }
+
+    public CampanhaDTO adicionaCampanha(Campanha campanha, String emailDono){
         campanha.setUrlCampanha(transformaURL(campanha.getNome()));
         Usuario dono = usuarioRepository.findByEmail(emailDono);
 
         campanha.setDono(dono);
 
         campanhaRepository.save(campanha);
-        return campanha;
+        return transformaParaDTO(campanha);
     }
 
     public boolean dataEhValida(Date data){
@@ -80,21 +118,21 @@ public class CampanhaService {
 
     }
 
-    public List<Campanha> pesquisarNome (String substring, Boolean estado) {
+    public List<CampanhaDTO> pesquisarNome (String substring, Boolean estado) {
         substring = transformaURL(substring);
 
-        List<Campanha> result = new ArrayList<>();
+        List<CampanhaDTO> result = new ArrayList<>();
         List<Campanha> campanhas = campanhaRepository.findAll();
         for (Campanha campanha : campanhas) {
 
             if(estado) {
                 if (transformaURL(campanha.getNome()).contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)) {
-                    result.add(campanha);
+                    result.add(transformaParaDTO(campanha));
                 }
             }
             else{
                 if (transformaURL(campanha.getNome()).contains(substring.toLowerCase())) {
-                    result.add(campanha);
+                    result.add(transformaParaDTO(campanha));
                 }
             }
         }

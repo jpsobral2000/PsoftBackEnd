@@ -2,6 +2,7 @@ package psoft.ufcg.ajude.Services;
 
 
 import org.springframework.stereotype.Service;
+import psoft.ufcg.ajude.DTO.UsuarioDTO;
 import psoft.ufcg.ajude.Entities.Usuario;
 import psoft.ufcg.ajude.Repositories.UsuarioRepository;
 
@@ -18,9 +19,20 @@ public class UsuarioService {
 
     //TODO Quando cadastrar é preciso enviar um email de boas vindas.
 
-    public Usuario adicionaUsuario(Usuario usuario){
+    public UsuarioDTO adicionaUsuario(Usuario usuario){
         this.usuarioRepository.save(usuario);
-        return usuario;
+        return transformaUsuarioEmDTO(usuario);
+    }
+
+    public UsuarioDTO transformaUsuarioEmDTO(Usuario usuario){
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+
+        usuarioDTO.setEmail(usuario.getEmail());
+        usuarioDTO.setPrimeiroNome(usuario.getPrimeiroNome());
+        usuarioDTO.setSegundoNome(usuario.getSegundoNome());
+
+        return usuarioDTO;
     }
 
     public Optional<Usuario> getUsuario(String email){
