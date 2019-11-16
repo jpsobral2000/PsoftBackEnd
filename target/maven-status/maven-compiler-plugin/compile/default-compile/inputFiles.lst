@@ -1,0 +1,15 @@
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Services/JWTService.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Repositories/CampanhaRepository.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Enum/StatusCampanha.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Repositories/UsuarioRepository.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Entities/Comentario.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Controllers/UsuarioController.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/AjudeApplication.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Filter/TokenFilter.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Entities/Doacao.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Entities/Usuario.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Services/CampanhaService.java
+/home/felipe/IdeaProjects/PsoftBackEnd/src/main/java/psoft/ufcg/ajude/Controllers/LoginController.java
