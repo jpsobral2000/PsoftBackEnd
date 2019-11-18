@@ -1,23 +1,23 @@
 package psoft.ufcg.ajude.DTO;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class ComentarioDTO {
     private String mensagem;
     private String email;
-    private Timestamp horaDeCriacao;
+    private Date horaDeCriacao;
 
-    public ComentarioDTO(String mensagem, String email, Timestamp hdc){
+    public ComentarioDTO(String mensagem, String email, Date hdc){
         this.mensagem = mensagem;
         this.email = email;
         this.horaDeCriacao = hdc;
     }
 
-    public Timestamp getHoraDeCriacao() {
+    public Date getHoraDeCriacao() {
         return horaDeCriacao;
     }
 
-    public void setHoraDeCriacao(Timestamp horaDeCriacao) {
+    public void setHoraDeCriacao(Date horaDeCriacao) {
         this.horaDeCriacao = horaDeCriacao;
     }
 
