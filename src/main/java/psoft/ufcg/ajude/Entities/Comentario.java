@@ -1,16 +1,20 @@
 package psoft.ufcg.ajude.Entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Comentario {
 
-   // @GeneratedValue
-  //  @Id
+    @GeneratedValue
+    @Id
     private long id;
     private String mensagem;
     private String emailDono;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp horaDeCriacao;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idCampanha")
@@ -63,4 +67,11 @@ public class Comentario {
         this.campanha = campanha;
     }
 
+    public Timestamp getHoraDeCriacao() {
+        return horaDeCriacao;
+    }
+
+    public void setHoraDeCriacao(Timestamp horaDeCriacao) {
+        this.horaDeCriacao = horaDeCriacao;
+    }
 }

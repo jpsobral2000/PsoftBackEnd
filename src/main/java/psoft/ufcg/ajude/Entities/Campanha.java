@@ -1,6 +1,5 @@
 package psoft.ufcg.ajude.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 
 import javax.persistence.*;

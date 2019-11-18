@@ -2,31 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a440ebd8-d1c0-4872-b267-c748a02211c2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dadoss.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dadoss.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/dadoss.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Comentario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController$LoginResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController$LoginResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/CampanhaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/CampanhaDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/UsuarioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/UsuarioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Repositories/ComentarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Repositories/ComentarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Comentario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Comentario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Doacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Doacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Enum/StatusCampanha.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Enum/StatusCampanha.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/EmailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
