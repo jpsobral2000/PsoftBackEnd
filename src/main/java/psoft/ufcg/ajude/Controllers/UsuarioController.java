@@ -42,7 +42,7 @@ public class UsuarioController {
         if(optionalUsuario.isPresent())
             return new ResponseEntity<UsuarioDTO>(HttpStatus.CONFLICT);
 
-        if (!usuarioService.verificaEmailValido(usuario.getEmail())){
+        if (usuarioService.verificaEmailValido(usuario.getEmail())){
             return new ResponseEntity<UsuarioDTO>(HttpStatus.FAILED_DEPENDENCY);
 
         }
