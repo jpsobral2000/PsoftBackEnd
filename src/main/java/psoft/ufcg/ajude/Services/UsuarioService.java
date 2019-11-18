@@ -41,6 +41,7 @@ public class UsuarioService {
     }
 
 
+    // ajeitar
     public boolean verificaEmailValido(String email) {
         boolean arroba = false;
         int aux = 0;

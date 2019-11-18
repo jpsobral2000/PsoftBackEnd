@@ -149,4 +149,16 @@ public class CampanhaController {
     }
 
 
+    @PostMapping("campanha/comentario/respota/{id}")
+    public ResponseEntity<ComentarioDTO> responderComentario (@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
+        if(!jwtService.existeUsuario(authorization))
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
+
+        Optional<Comentario> comentario = comentarioService.getCometario(id);
+        if(!comentario.isPresent())
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<ComentarioDTO>(comentarioService.respondeComentario(), HttpStatus.CREATED);
+    }
+
 }

@@ -13,6 +13,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ComentarioService {
@@ -32,16 +33,30 @@ public class ComentarioService {
         comentario.setHoraDeCriacao(Date.from(Instant.now()));
         comentarioRepository.save(comentario);
 
-        return new ComentarioDTO(comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao());
+        return new ComentarioDTO(comentario.getId(), comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao());
     }
 
     public List<ComentarioDTO> getComentarios(Campanha campanha){
         List<ComentarioDTO> comentarioDTOS = new ArrayList<>();
         List<Comentario> comentarios = this.comentarioRepository.findByCampanha(campanha);
         for(Comentario comentario: comentarios){
-            comentarioDTOS.add(new ComentarioDTO(comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao()));
+            comentarioDTOS.add(new ComentarioDTO(comentario.getId(), comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao()));
         }
 
         return comentarioDTOS;
+    }
+
+    public  Optional<Comentario> getCometario(Long id){
+        Optional<Comentario> comentario = comentarioRepository.findById(id);
+        return comentario;
+
+
+    }
+
+    public ComentarioDTO respondeComentario(Long id, Comentario resposta) {
+        Optional<Comentario> comentario = comentarioRepository.findById(id);
+        List<Comentario> respostas = comentario.get().getRespostas();
+        respostas.add(resposta);
+        return new ComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono())
     }
 }
