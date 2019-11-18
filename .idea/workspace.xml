@@ -2,162 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a440ebd8-d1c0-4872-b267-c748a02211c2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/ajude.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dadoss.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Comentario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/CampanhaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController$LoginResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController$LoginResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Controllers/UsuarioController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/CampanhaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/CampanhaDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/UsuarioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/UsuarioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Campanha.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Comentario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Comentario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Doacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Doacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Entities/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Enum/StatusCampanha.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Enum/StatusCampanha.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Filter/TokenFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/CampanhaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Repositories/UsuarioRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/CampanhaService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/JWTService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/Services/UsuarioService.class" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-822556185">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="52" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="52" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/DTO/CampanhaDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="10" selection-start-line="10" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Usuario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/UsuarioController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/EmailService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/AjudeApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/DTO/UsuarioDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/EmailService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/UsuarioController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java" />
-      </list>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -176,189 +62,6 @@
   <component name="ProjectId" id="1TAOrG5sIhWPjZPojWq5gJlxVrE" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="psoft" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="psoft" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ufcg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="psoft" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ufcg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ajude" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ajude" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ajude" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="psoft" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ufcg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ajude" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Services" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="DTO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="Entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="Enum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="Filter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ajude" type="462c0819:PsiDirectoryNode" />
-              <item name="Services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajude" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PsoftBackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
@@ -411,160 +114,17 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25235197" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Floobits" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Image Layers" order="0" />
-      <window_info id="Designer" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24962178" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Floobits" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-    </layout-to-restore>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/DTO/CampanhaDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/AjudeApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/DTO/UsuarioDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/UsuarioController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/EmailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Controllers/CampanhaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Campanha.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" selection-start-line="10" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Entities/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/Services/UsuarioService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

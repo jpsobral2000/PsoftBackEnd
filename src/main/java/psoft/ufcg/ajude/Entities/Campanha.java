@@ -6,6 +6,7 @@ import psoft.ufcg.ajude.Enum.StatusCampanha;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Campanha implements Serializable {
@@ -30,6 +31,10 @@ public class Campanha implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idDono")
     private Usuario dono;
+
+    @OneToMany(mappedBy = "campanha", fetch = FetchType.EAGER)
+    private List<Comentario> comentarios;
+
 
 
     public Campanha(){
@@ -96,6 +101,15 @@ public class Campanha implements Serializable {
     }
 
     public long getId() {
+
         return id;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

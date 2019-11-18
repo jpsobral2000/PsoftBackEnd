@@ -1,8 +1,7 @@
 package psoft.ufcg.ajude.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 //@Entity
 public class Comentario {
@@ -12,6 +11,15 @@ public class Comentario {
     private long id;
     private String mensagem;
     private String emailDono;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "idCampanha")
+    private Campanha campanha;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+    private List<Comentario> respostas;
+
+
 
     public Comentario(){}
 
@@ -38,4 +46,21 @@ public class Comentario {
     public void setId(long id) {
         this.id = id;
     }
+
+    public List<Comentario> getRespostas() {
+        return respostas;
+    }
+
+    public Campanha getCampanha() {
+        return campanha;
+    }
+
+    public void setRespostas(List<Comentario> respostas) {
+        this.respostas = respostas;
+    }
+
+    public void setCampanha(Campanha campanha) {
+        this.campanha = campanha;
+    }
+
 }
