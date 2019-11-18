@@ -29,6 +29,8 @@ public class UsuarioController {
         if(usuario.isPresent())
             return new ResponseEntity<UsuarioDTO>(usuarioService.transformaUsuarioEmDTO(usuario.get()), HttpStatus.OK);
 
+
+
         return new ResponseEntity<UsuarioDTO>(HttpStatus.NOT_FOUND);
 
     }
@@ -44,6 +46,8 @@ public class UsuarioController {
             return new ResponseEntity<UsuarioDTO>(HttpStatus.FAILED_DEPENDENCY);
 
         }
+        else
+            emailService.sendEmail(usuario.getEmail());
 
         return new ResponseEntity<UsuarioDTO>(this.usuarioService.adicionaUsuario(usuario), HttpStatus.CREATED);
     }
