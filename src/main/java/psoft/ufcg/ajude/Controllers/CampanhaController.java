@@ -8,6 +8,7 @@ import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.DTO.ComentarioDTO;
 import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Entities.Comentario;
+import psoft.ufcg.ajude.Entities.RespostaComentario;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Services.CampanhaService;
 import psoft.ufcg.ajude.Services.ComentarioService;
@@ -27,7 +28,7 @@ public class CampanhaController {
     private JWTService jwtService;
     private ComentarioService comentarioService;
 
-    public CampanhaController(CampanhaService campanhaService, JWTService jwtService, ComentarioService comentarioService){
+    public CampanhaController(CampanhaService campanhaService, JWTService jwtService, ComentarioService comentarioService) {
         this.campanhaService = campanhaService;
         this.jwtService = jwtService;
         this.comentarioService = comentarioService;
@@ -38,15 +39,15 @@ public class CampanhaController {
         Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanhaService.transformaURL(campanha.getNome()));
 
 
-        if(!jwtService.existeUsuario(authorization)) {
+        if (!jwtService.existeUsuario(authorization)) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
         }
 
-        if(checkCampanha.isPresent()) {
+        if (checkCampanha.isPresent()) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.CONFLICT);
         }
 
-        if(!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null) {
+        if (!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
 
@@ -58,17 +59,17 @@ public class CampanhaController {
 
     @GetMapping("/campanha/{nome}")
     public ResponseEntity<CampanhaDTO> getCampanha(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
-        if (!jwtService.existeUsuario(authorization)){
+        if (!jwtService.existeUsuario(authorization)) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
         }
 
         Optional<Campanha> campanha = campanhaService.getCampanha(nome);
 
-        if(campanha.isPresent()) {
+        if (campanha.isPresent()) {
             return new ResponseEntity<CampanhaDTO>(campanhaService.transformaParaDTO(campanha.get()), HttpStatus.OK);
         }
 
-        return  new ResponseEntity<CampanhaDTO>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<CampanhaDTO>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/campanha/pesquisar/{nome}")
@@ -82,29 +83,27 @@ public class CampanhaController {
         List<CampanhaDTO> campanha = campanhaService.pesquisarNome(nome, estado);
 
 
-        if(!campanha.isEmpty()) {
+        if (!campanha.isEmpty()) {
             return new ResponseEntity<List<CampanhaDTO>>(campanha, HttpStatus.OK);
         }
 
 
-        return  new ResponseEntity<List<CampanhaDTO>>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<List<CampanhaDTO>>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("campanha/{nome}")
     public ResponseEntity<CampanhaDTO> editaCampanha(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization, @RequestBody CampanhaDTO campanha) throws ServletException {
 
-        if(!jwtService.existeUsuario(authorization))
+        if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
 
 
         Optional<Campanha> campanhaOptional = campanhaService.getCampanha(nome);
 
-        if(!campanhaOptional.isPresent()) {
+        if (!campanhaOptional.isPresent()) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.NOT_FOUND);
-        }
-
-        else {
-            if(!jwtService.usuarioTemPermissao(authorization, campanhaOptional.get().getDono().getEmail())) {
+        } else {
+            if (!jwtService.usuarioTemPermissao(authorization, campanhaOptional.get().getDono().getEmail())) {
                 return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
             }
         }
@@ -116,18 +115,18 @@ public class CampanhaController {
     @PostMapping("campanha/comentario/{nome}")
     public ResponseEntity<ComentarioDTO> comentaCampanha(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization, @RequestBody Comentario comentario) throws ServletException {
 
-        if(!jwtService.existeUsuario(authorization))
+        if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
 
         Optional<Campanha> campanha = campanhaService.getCampanha(nome);
 
-        if(!campanha.isPresent())
+        if (!campanha.isPresent())
             return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
 
         comentario.setCampanha(campanha.get());
         comentario.setEmailDono(jwtService.getUsuarioToken(authorization));
 
-        if(!comentarioService.verificaValidade(comentario))
+        if (!comentarioService.verificaValidade(comentario))
             return new ResponseEntity<ComentarioDTO>(HttpStatus.BAD_REQUEST);
 
 
@@ -137,12 +136,13 @@ public class CampanhaController {
     @GetMapping("campanha/comentario/{nome}")
     public ResponseEntity<List<ComentarioDTO>> getComentarios(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
 
-        if(!jwtService.existeUsuario(authorization))
+        if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<List<ComentarioDTO>>(HttpStatus.UNAUTHORIZED);
 
         Optional<Campanha> campanha = campanhaService.getCampanha(nome);
 
-        if(!campanha.isPresent())
+
+        if (!campanha.isPresent())
             return new ResponseEntity<List<ComentarioDTO>>(HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<List<ComentarioDTO>>(comentarioService.getComentarios(campanha.get()), HttpStatus.OK);
@@ -150,15 +150,36 @@ public class CampanhaController {
 
 
     @PostMapping("campanha/comentario/respota/{id}")
-    public ResponseEntity<ComentarioDTO> responderComentario (@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
+    public ResponseEntity<ComentarioDTO> responderComentario(@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @RequestBody RespostaComentario resposta) throws ServletException {
+        if (!jwtService.existeUsuario(authorization))
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
+
+        Optional<Comentario> comentario = comentarioService.getCometario(id);
+        resposta.setEmailDono(jwtService.getUsuarioToken(authorization));
+
+        if (!comentario.isPresent())
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<ComentarioDTO>(comentarioService.respondeComentario(comentario.get().getId(), resposta), HttpStatus.CREATED);
+    }
+
+    /**
+    @DeleteMapping("campanha/comentario/{id}")
+    public ResponseEntity<ComentarioDTO> apagarComentario (@PathVariable Long id, @RequestHeader (value = "Authorization")String authorization,) throws ServletException {
         if(!jwtService.existeUsuario(authorization))
             return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
 
         Optional<Comentario> comentario = comentarioService.getCometario(id);
+
         if(!comentario.isPresent())
             return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
 
-        return new ResponseEntity<ComentarioDTO>(comentarioService.respondeComentario(), HttpStatus.CREATED);
+        //return ResponseEntity<ComentarioDTO>(comentarioService.deletarComentario() HttpStatus.OK);
+        return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
+
     }
+    */
+
 
 }
+

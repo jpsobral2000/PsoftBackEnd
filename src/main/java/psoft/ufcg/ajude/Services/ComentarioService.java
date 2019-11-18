@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.DTO.ComentarioDTO;
 import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Entities.Comentario;
+import psoft.ufcg.ajude.Entities.RespostaComentario;
 import psoft.ufcg.ajude.Repositories.ComentarioRepository;
+import psoft.ufcg.ajude.Repositories.RespostaComentarioRepository;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -18,8 +20,10 @@ import java.util.Optional;
 @Service
 public class ComentarioService {
     private ComentarioRepository<Comentario, Long> comentarioRepository;
+    private RespostaComentarioRepository<RespostaComentario, Long> respostaComentarioRepository;
 
-    public ComentarioService(ComentarioRepository comentarioRepository){
+    public ComentarioService(ComentarioRepository comentarioRepository, RespostaComentarioRepository respostaComentarioRepository){
+        this.respostaComentarioRepository = respostaComentarioRepository;
         this.comentarioRepository = comentarioRepository;
     }
 
@@ -53,10 +57,17 @@ public class ComentarioService {
 
     }
 
-    public ComentarioDTO respondeComentario(Long id, Comentario resposta) {
+    public ComentarioDTO respondeComentario(long id, RespostaComentario resposta) {
         Optional<Comentario> comentario = comentarioRepository.findById(id);
-        List<Comentario> respostas = comentario.get().getRespostas();
+        List<RespostaComentario> respostas = comentario.get().getRespostas();
+        resposta.setComentario(comentario.get());
+        resposta.setHoraDeCriacao(Date.from(Instant.now()));
+        respostaComentarioRepository.save(resposta);
         respostas.add(resposta);
-        return new ComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono())
+        return new ComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono(), resposta.getHoraDeCriacao());
+    }
+
+    public boolean deletarComentario() {
+        return true;
     }
 }

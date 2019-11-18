@@ -2,10 +2,10 @@ package psoft.ufcg.ajude.Entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+
 
 @Entity
-public class Comentario {
+public class RespostaComentario {
 
     @GeneratedValue
     @Id
@@ -17,15 +17,11 @@ public class Comentario {
     private Date horaDeCriacao;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idCampanha")
-    private Campanha campanha;
+    @JoinColumn(name = "idComentario")
+    private Comentario comentario;
 
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
-    private List<RespostaComentario> respostas;
-
-
-    public Comentario(){}
+    public RespostaComentario(){}
 
     public String getMensagem() {
         return mensagem;
@@ -51,22 +47,12 @@ public class Comentario {
         this.id = id;
     }
 
-
-
-    public Campanha getCampanha() {
-        return campanha;
+    public Comentario getComentario() {
+        return comentario;
     }
 
-    public List<RespostaComentario> getRespostas() {
-        return respostas;
-    }
-
-    public void setRespostas(List<RespostaComentario> respostas) {
-        this.respostas = respostas;
-    }
-
-    public void setCampanha(Campanha campanha) {
-        this.campanha = campanha;
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
     }
 
     public Date getHoraDeCriacao() {
@@ -78,3 +64,4 @@ public class Comentario {
     }
 
 }
+

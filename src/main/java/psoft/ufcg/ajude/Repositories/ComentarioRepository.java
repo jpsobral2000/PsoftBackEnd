@@ -12,6 +12,5 @@ import java.util.Optional;
 @Repository
 public interface ComentarioRepository<T, ID extends Serializable> extends JpaRepository<Comentario, Long> {
 
-    Optional<Comentario> findById(Long id);
     List<Comentario> findByCampanha(Campanha campanha);
 }
