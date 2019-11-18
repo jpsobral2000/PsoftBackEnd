@@ -1,7 +1,6 @@
 package psoft.ufcg.ajude.Entities;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -72,7 +71,8 @@ public class Comentario {
         return horaDeCriacao;
     }
 
-    public void setHoraDeCriacao(Timestamp horaDeCriacao) {
+    public void setHoraDeCriacao(Date horaDeCriacao) {
         this.horaDeCriacao = horaDeCriacao;
     }
+
 }

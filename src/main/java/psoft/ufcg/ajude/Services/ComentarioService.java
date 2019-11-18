@@ -6,12 +6,22 @@ import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Entities.Comentario;
 import psoft.ufcg.ajude.Repositories.ComentarioRepository;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class ComentarioService {
     private ComentarioRepository<Comentario, Long> comentarioRepository;
+
+    public ComentarioService(ComentarioRepository comentarioRepository){
+        this.comentarioRepository = comentarioRepository;
+    }
+
 
 
     public boolean verificaValidade(Comentario comentario){
@@ -19,6 +29,7 @@ public class ComentarioService {
     }
 
     public ComentarioDTO adicionaComentario(Comentario comentario){
+        comentario.setHoraDeCriacao(Date.from(Instant.now()));
         comentarioRepository.save(comentario);
 
         return new ComentarioDTO(comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao());
