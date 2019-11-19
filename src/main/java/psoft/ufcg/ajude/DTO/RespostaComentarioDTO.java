@@ -1,31 +1,18 @@
 package psoft.ufcg.ajude.DTO;
 
-import psoft.ufcg.ajude.Entities.RespostaComentario;
-
 import java.util.Date;
-import java.util.List;
 
-public class ComentarioDTO {
+public class RespostaComentarioDTO {
     private long id;
     private String mensagem;
     private String email;
     private Date horaDeCriacao;
-    private List<RespostaComentarioDTO> respostaComentarios;
 
-    public ComentarioDTO(Long id, String mensagem, String email, Date hdc, List<RespostaComentarioDTO> respostaComentarios){
+    public RespostaComentarioDTO(Long id, String mensagem, String email, Date hdc){
         this.id = id;
         this.mensagem = mensagem;
         this.email = email;
         this.horaDeCriacao = hdc;
-        this.respostaComentarios = respostaComentarios;
-    }
-
-    public void setRespostaComentarios(List<RespostaComentarioDTO> respostaComentarios) {
-        this.respostaComentarios = respostaComentarios;
-    }
-
-    public List<RespostaComentarioDTO> getRespostaComentarios() {
-        return respostaComentarios;
     }
 
     public Date getHoraDeCriacao() {
@@ -59,6 +46,4 @@ public class ComentarioDTO {
     public void setId(long id) {
         this.id = id;
     }
-
-
 }

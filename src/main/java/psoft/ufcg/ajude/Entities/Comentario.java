@@ -5,9 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@SequenceGenerator(name="seq", initialValue=1)
 public class Comentario {
 
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Id
     private long id;
     private String mensagem;
@@ -21,7 +22,7 @@ public class Comentario {
     private Campanha campanha;
 
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "comentario", fetch = FetchType.EAGER)
     private List<RespostaComentario> respostas;
 
 

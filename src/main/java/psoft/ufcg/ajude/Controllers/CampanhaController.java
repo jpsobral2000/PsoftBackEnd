@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.DTO.ComentarioDTO;
+import psoft.ufcg.ajude.DTO.RespostaComentarioDTO;
 import psoft.ufcg.ajude.Entities.Campanha;
 import psoft.ufcg.ajude.Entities.Comentario;
 import psoft.ufcg.ajude.Entities.RespostaComentario;
@@ -149,36 +150,35 @@ public class CampanhaController {
     }
 
 
-    @PostMapping("campanha/comentario/respota/{id}")
-    public ResponseEntity<ComentarioDTO> responderComentario(@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @RequestBody RespostaComentario resposta) throws ServletException {
+    @PostMapping("campanha/comentario/resposta/{id}")
+    public ResponseEntity<RespostaComentarioDTO> responderComentario(@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @RequestBody RespostaComentario resposta) throws ServletException {
         if (!jwtService.existeUsuario(authorization))
-            return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<RespostaComentarioDTO>(HttpStatus.UNAUTHORIZED);
 
         Optional<Comentario> comentario = comentarioService.getCometario(id);
         resposta.setEmailDono(jwtService.getUsuarioToken(authorization));
 
         if (!comentario.isPresent())
-            return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<RespostaComentarioDTO>(HttpStatus.NOT_FOUND);
 
-        return new ResponseEntity<ComentarioDTO>(comentarioService.respondeComentario(comentario.get().getId(), resposta), HttpStatus.CREATED);
+        return new ResponseEntity<RespostaComentarioDTO>(comentarioService.respondeComentario(comentario.get().getId(), resposta), HttpStatus.CREATED);
     }
 
-    /**
     @DeleteMapping("campanha/comentario/{id}")
-    public ResponseEntity<ComentarioDTO> apagarComentario (@PathVariable Long id, @RequestHeader (value = "Authorization")String authorization,) throws ServletException {
-        if(!jwtService.existeUsuario(authorization))
-            return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<ComentarioDTO> apagarComentario (@PathVariable Long id, @RequestHeader (value = "Authorization") String authorization) throws ServletException {
 
         Optional<Comentario> comentario = comentarioService.getCometario(id);
+        Optional<RespostaComentario> respostaComentario = comentarioService.getRespostaComentario(id);
 
-        if(!comentario.isPresent())
+        if(!comentario.isPresent() && !respostaComentario.isPresent())
             return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
 
-        //return ResponseEntity<ComentarioDTO>(comentarioService.deletarComentario() HttpStatus.OK);
-        return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
+        if((!jwtService.existeUsuario(authorization) || (comentario.isPresent() && !jwtService.usuarioTemPermissao(authorization, comentario.get().getEmailDono()))) || (respostaComentario.isPresent() && !jwtService.usuarioTemPermissao(authorization, respostaComentario.get().getEmailDono())))
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
+
+        return new ResponseEntity<ComentarioDTO>(comentarioService.deletarComentario(id), HttpStatus.OK);
 
     }
-    */
 
 
 }

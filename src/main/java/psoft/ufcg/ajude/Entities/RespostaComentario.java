@@ -5,11 +5,13 @@ import java.util.Date;
 
 
 @Entity
+@SequenceGenerator(name="seq", initialValue=1)
 public class RespostaComentario {
 
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Id
     private long id;
+
     private String mensagem;
     private String emailDono;
 
