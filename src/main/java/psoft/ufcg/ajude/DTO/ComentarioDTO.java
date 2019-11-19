@@ -1,7 +1,5 @@
 package psoft.ufcg.ajude.DTO;
 
-import psoft.ufcg.ajude.Entities.RespostaComentario;
-
 import java.util.Date;
 import java.util.List;
 
