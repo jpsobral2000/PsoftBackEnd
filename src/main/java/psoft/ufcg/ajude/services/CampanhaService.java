@@ -2,16 +2,20 @@ package psoft.ufcg.ajude.services;
 
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
+import psoft.ufcg.ajude.DTO.DoacaoDTO;
 import psoft.ufcg.ajude.entities.Campanha;
+import psoft.ufcg.ajude.entities.Doacao;
 import psoft.ufcg.ajude.entities.LikeB;
 import psoft.ufcg.ajude.entities.Usuario;
 import psoft.ufcg.ajude.enums.StatusCampanha;
 import psoft.ufcg.ajude.repositories.CampanhaRepository;
+import psoft.ufcg.ajude.repositories.DoacaoRepository;
 import psoft.ufcg.ajude.repositories.LikeRepository;
 import psoft.ufcg.ajude.repositories.UsuarioRepository;
 
 import javax.servlet.ServletException;
 import java.text.Normalizer;
+import java.time.Instant;
 import java.util.*;
 
 @Service
@@ -20,12 +24,14 @@ public class CampanhaService {
     private CampanhaRepository<Campanha, String> campanhaRepository;
     private UsuarioRepository<Usuario, String> usuarioRepository;
     private LikeRepository<LikeB, Long> likeRepository;
+    private DoacaoRepository<Doacao, Long> doacaoRepository;
 
 
-    public CampanhaService(CampanhaRepository<Campanha, String> campanhaRepository, UsuarioRepository<Usuario, String> usuarioRepository, LikeRepository<LikeB, Long> likeRepository){
+    public CampanhaService(DoacaoRepository<Doacao, Long> doacaoRepository, CampanhaRepository<Campanha, String> campanhaRepository, UsuarioRepository<Usuario, String> usuarioRepository, LikeRepository<LikeB, Long> likeRepository){
         this.usuarioRepository = usuarioRepository;
         this.campanhaRepository = campanhaRepository;
         this.likeRepository = likeRepository;
+        this.doacaoRepository = doacaoRepository;
 
     }
 
@@ -72,6 +78,7 @@ public class CampanhaService {
         Usuario dono = usuarioRepository.findByEmail(emailDono);
         campanha.setDono(dono);
         campanha.setLikes(new HashSet<LikeB>());
+        campanha.setAcumulado(0.0);
 
         campanhaRepository.save(campanha);
         return transformaParaDTO(campanha);
@@ -167,5 +174,35 @@ public class CampanhaService {
         likeRepository.delete(likeB.get());
 
         return  transformaParaDTO(campanha);
+    }
+
+    public DoacaoDTO realizarDoacaoCampanha(Campanha campanha, String email, Doacao doacao) throws ServletException {
+
+        if(campanha.getStatus().equals(StatusCampanha.CONCLUIDA) || campanha.getStatus().equals(StatusCampanha.ENCERRADA))
+            throw new ServletException("Não é possível realizar doação para campanhas concluidas ou encerradas");
+
+        doacao.setCampanha(campanha);
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        doacao.setUsuario(usuario);
+        doacao.setDate(Date.from(Instant.now()));
+        doacaoRepository.save(doacao);
+        campanha.setAcumulado(campanha.getAcumulado() + doacao.getValor());
+
+        Double faltaParaCampanha = 0.0;
+
+        if(campanha.getMeta() - campanha.getAcumulado() > 0){
+            faltaParaCampanha = campanha.getMeta() - campanha.getAcumulado();
+        }
+        else{
+            faltaParaCampanha = 0.0;
+            campanha.setStatus(StatusCampanha.VENCIDA);
+        }
+
+        campanhaRepository.save(campanha);
+
+        DoacaoDTO doacaoDTO = new DoacaoDTO(campanha.getNome(), usuario.getEmail(), doacao.getValor(), faltaParaCampanha, doacao.getDate());
+
+        return doacaoDTO;
+
     }
 }

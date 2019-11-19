@@ -22,8 +22,19 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<LikeB> likesDados;
 
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private Set<Doacao> doacoes;
+
     public Usuario () {
 
+    }
+
+    public Set<Doacao> getDoacoes() {
+        return doacoes;
+    }
+
+    public void setDoacoes(Set<Doacao> doacoes) {
+        this.doacoes = doacoes;
     }
 
     public String getPrimeiroNome() {

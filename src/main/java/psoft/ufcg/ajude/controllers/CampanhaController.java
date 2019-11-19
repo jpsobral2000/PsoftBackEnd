@@ -5,9 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.DTO.ComentarioDTO;
+import psoft.ufcg.ajude.DTO.DoacaoDTO;
 import psoft.ufcg.ajude.DTO.RespostaComentarioDTO;
 import psoft.ufcg.ajude.entities.Campanha;
 import psoft.ufcg.ajude.entities.Comentario;
+import psoft.ufcg.ajude.entities.Doacao;
 import psoft.ufcg.ajude.entities.RespostaComentario;
 import psoft.ufcg.ajude.enums.StatusCampanha;
 import psoft.ufcg.ajude.services.CampanhaService;
@@ -48,6 +50,9 @@ public class CampanhaController<authorization> {
         if (!campanhaService.dataEhValida(campanha.getDeadline()) || campanha.getDeadline() == null) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
+
+        if(campanha.getMeta() == null)
+            return new ResponseEntity<CampanhaDTO>(HttpStatus.BAD_REQUEST);
 
         campanha.setStatus(StatusCampanha.ATIVA);
         String emailDono = jwtService.getEmailPorToken(authorization);
@@ -203,9 +208,23 @@ public class CampanhaController<authorization> {
         String email = jwtService.getEmailPorToken(authorization);
 
 
-
-
         return new ResponseEntity<CampanhaDTO>(campanhaService.retirarCurtirCampanha(campanha.get(), email), HttpStatus.ACCEPTED);
+
+    }
+
+    @PostMapping("campanha/doar/{nome}")
+    public ResponseEntity<DoacaoDTO> realizarDoacao(@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization, @RequestBody Doacao doacao) throws ServletException {
+
+        Optional<Campanha> campanha = campanhaService.getCampanha(nome);
+        if (!campanha.isPresent() || !jwtService.existeUsuario(authorization))
+            return new ResponseEntity<DoacaoDTO>(HttpStatus.NOT_FOUND);
+
+        if (doacao.getValor() == null)
+            return new ResponseEntity<DoacaoDTO>(HttpStatus.BAD_REQUEST);
+
+        String email = jwtService.getEmailPorToken(authorization);
+
+        return new ResponseEntity<DoacaoDTO>(campanhaService.realizarDoacaoCampanha(campanha.get(), email, doacao),HttpStatus.CREATED);
 
     }
 

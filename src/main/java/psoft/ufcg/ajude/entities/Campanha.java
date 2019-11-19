@@ -1,5 +1,6 @@
 package psoft.ufcg.ajude.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import psoft.ufcg.ajude.enums.StatusCampanha;
 
 import javax.persistence.*;
@@ -22,11 +23,14 @@ public class Campanha implements Serializable {
 
     private String descricao;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date deadline;
 
     private StatusCampanha status;
     private Double meta;
+
+    @JsonIgnore
+    private Double acumulado;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idDono")
@@ -38,8 +42,26 @@ public class Campanha implements Serializable {
     @OneToMany(mappedBy = "campanha",fetch = FetchType.EAGER)
     private Set<LikeB> likes;
 
+    @OneToMany(mappedBy = "campanha",fetch = FetchType.EAGER)
+    private Set<Doacao> doacoes;
 
     public Campanha(){
+    }
+
+    public void setAcumulado(Double acumulado) {
+        this.acumulado = acumulado;
+    }
+
+    public Double getAcumulado() {
+        return acumulado;
+    }
+
+    public Set<Doacao> getDoacoes() {
+        return doacoes;
+    }
+
+    public void setDoacoes(Set<Doacao> doacoes) {
+        this.doacoes = doacoes;
     }
 
     public String getNome() {
