@@ -3,9 +3,11 @@ package psoft.ufcg.ajude.Services;
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.Entities.Campanha;
+import psoft.ufcg.ajude.Entities.Like;
 import psoft.ufcg.ajude.Entities.Usuario;
 import psoft.ufcg.ajude.Enum.StatusCampanha;
 import psoft.ufcg.ajude.Repositories.CampanhaRepository;
+import psoft.ufcg.ajude.Repositories.LikeRepository;
 import psoft.ufcg.ajude.Repositories.UsuarioRepository;
 
 import java.text.Normalizer;
@@ -16,9 +18,11 @@ public class CampanhaService {
 
     private CampanhaRepository<Campanha, String> campanhaRepository;
     private UsuarioRepository<Usuario, String> usuarioRepository;
+    private LikeRepository<Like, String> likeRepository;
 
 
-    public CampanhaService(CampanhaRepository<Campanha, String> campanhaRepository, UsuarioRepository<Usuario, String> usuarioRepository){
+    public CampanhaService(CampanhaRepository<Campanha, String> campanhaRepository, UsuarioRepository<Usuario, String> usuarioRepository,LikeRepository<Like, String> likeRepository){
+        this.likeRepository = likeRepository;
         this.usuarioRepository = usuarioRepository;
         this.campanhaRepository = campanhaRepository;
 
@@ -139,4 +143,13 @@ public class CampanhaService {
         return result;
     }
 
+
+    public CampanhaDTO curtirCampanha(Campanha campanha, String email) {
+        Optional<Campanha> campanhaFinded = campanhaRepository.findById(campanha.getId());
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        campanhaFinded.get().getLikes().add(new Like(usuario));
+        new Like(usuario);
+        likeRepository.save(usuario);
+
+    }
 }

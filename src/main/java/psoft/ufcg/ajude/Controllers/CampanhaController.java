@@ -23,7 +23,7 @@ import java.util.Set;
 
 
 @RestController
-public class CampanhaController {
+public class CampanhaController<authorization> {
 
     private CampanhaService campanhaService;
     private JWTService jwtService;
@@ -180,6 +180,22 @@ public class CampanhaController {
 
     }
 
+    @PostMapping("campanha/curtir/{nome}")
+    public ResponseEntity<CampanhaDTO> curtirCampanha (@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization) throws ServletException {
+
+        Optional<Campanha> campanha = campanhaService.getCampanha(nome);
+        if (!campanha.isPresent())
+            return new ResponseEntity<CampanhaDTO>(HttpStatus.NOT_FOUND);
+
+
+        if (!jwtService.existeUsuario(authorization))
+            return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
+
+        String email = jwtService.getUsuarioToken(authorization);
+
+        return new ResponseEntity<CampanhaDTO>(campanhaService.curtirCampanha(campanha.get(), email), HttpStatus.OK);
+
+    }
 
 }
 

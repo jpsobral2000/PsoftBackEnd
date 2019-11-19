@@ -34,6 +34,8 @@ public class Campanha implements Serializable {
     @OneToMany(mappedBy = "campanha", fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
 
+    @OneToMany(mappedBy = "campanha",fetch = FetchType.EAGER)
+    private List<Like> likes;
 
 
     public Campanha(){
@@ -110,5 +112,13 @@ public class Campanha implements Serializable {
 
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public List<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
     }
 }

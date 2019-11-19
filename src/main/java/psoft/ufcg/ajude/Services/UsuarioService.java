@@ -44,18 +44,14 @@ public class UsuarioService {
     // ajeitar
     public boolean verificaEmailValido(String email) {
         boolean arroba = false;
-        int aux = 0;
         for (int i = 0; i < email.length(); i++) {
             if (email.charAt(i) == '@') {
                 arroba = true;
-                aux = i;
             }
             if (email.charAt(i) == '@' && arroba) {
                 return false;
             }
         }
-        if (arroba)
-            return true;
-        return false;
+        return arroba;
     }
 }
