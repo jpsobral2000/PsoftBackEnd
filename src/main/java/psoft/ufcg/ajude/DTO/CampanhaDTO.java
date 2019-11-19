@@ -1,6 +1,6 @@
 package psoft.ufcg.ajude.DTO;
 
-import psoft.ufcg.ajude.Enum.StatusCampanha;
+import psoft.ufcg.ajude.enums.StatusCampanha;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,8 +21,18 @@ public class CampanhaDTO {
 
     private UsuarioDTO dono;
 
+    private Long likes;
+
     public CampanhaDTO(){
         this.dono = new UsuarioDTO();
+    }
+
+    public Long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Long likes) {
+        this.likes = likes;
     }
 
     public String getNome() {
