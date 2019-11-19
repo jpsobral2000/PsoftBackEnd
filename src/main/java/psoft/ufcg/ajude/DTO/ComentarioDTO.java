@@ -8,9 +8,9 @@ public class ComentarioDTO {
     private String mensagem;
     private String email;
     private Date horaDeCriacao;
-    private List<RespostaComentarioDTO> respostaComentarios;
+    private List<ComentarioDTO> respostaComentarios;
 
-    public ComentarioDTO(Long id, String mensagem, String email, Date hdc, List<RespostaComentarioDTO> respostaComentarios){
+    public ComentarioDTO(Long id, String mensagem, String email, Date hdc, List<ComentarioDTO> respostaComentarios){
         this.id = id;
         this.mensagem = mensagem;
         this.email = email;
@@ -18,11 +18,11 @@ public class ComentarioDTO {
         this.respostaComentarios = respostaComentarios;
     }
 
-    public void setRespostaComentarios(List<RespostaComentarioDTO> respostaComentarios) {
+    public void setRespostaComentarios(List<ComentarioDTO> respostaComentarios) {
         this.respostaComentarios = respostaComentarios;
     }
 
-    public List<RespostaComentarioDTO> getRespostaComentarios() {
+    public List<ComentarioDTO> getRespostaComentarios() {
         return respostaComentarios;
     }
 

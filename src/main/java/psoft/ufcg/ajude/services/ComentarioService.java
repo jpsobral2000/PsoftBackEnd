@@ -2,7 +2,6 @@ package psoft.ufcg.ajude.services;
 
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.DTO.ComentarioDTO;
-import psoft.ufcg.ajude.DTO.RespostaComentarioDTO;
 import psoft.ufcg.ajude.entities.Campanha;
 import psoft.ufcg.ajude.entities.Comentario;
 import psoft.ufcg.ajude.entities.RespostaComentario;
@@ -58,33 +57,28 @@ public class ComentarioService {
         return respostaComentario;
     }
 
-    public RespostaComentarioDTO respondeComentario(long id, RespostaComentario resposta) {
+    public ComentarioDTO respondeComentario(long id, RespostaComentario resposta) {
         Optional<Comentario> comentario = comentarioRepository.findById(id);
         List<RespostaComentario> respostas = comentario.get().getRespostas();
         resposta.setComentario(comentario.get());
         resposta.setHoraDeCriacao(Date.from(Instant.now()));
         respostaComentarioRepository.save(resposta);
-        respostas.add(resposta);
-        return new RespostaComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono(), resposta.getHoraDeCriacao());
+        return new ComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono(), resposta.getHoraDeCriacao(), null);
     }
 
     private ComentarioDTO transformaComentarioDTO(Comentario comentario){
-        List<RespostaComentarioDTO> respostaComentarioDTO = new ArrayList<>();
+        List<ComentarioDTO> respostaComentarioDTO = new ArrayList<>();
 
         if(comentario.getRespostas() == null)
             comentario.setRespostas(new ArrayList<>());
 
         if(!comentario.getRespostas().isEmpty()) {
             for (RespostaComentario respostaComentario : comentario.getRespostas()) {
-                respostaComentarioDTO.add(transformaRespostaComentarioDTO(respostaComentario));
+                respostaComentarioDTO.add(new ComentarioDTO(respostaComentario.getId(), respostaComentario.getMensagem(), respostaComentario.getEmailDono(), respostaComentario.getHoraDeCriacao(), null));
             }
         }
 
         return new ComentarioDTO(comentario.getId(), comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao(), respostaComentarioDTO);
-    }
-
-    private RespostaComentarioDTO transformaRespostaComentarioDTO(RespostaComentario respostaComentario){
-        return new RespostaComentarioDTO(respostaComentario.getId(), respostaComentario.getMensagem(), respostaComentario.getEmailDono(), respostaComentario.getHoraDeCriacao());
     }
 
     public ComentarioDTO deletarComentario(Long id) {

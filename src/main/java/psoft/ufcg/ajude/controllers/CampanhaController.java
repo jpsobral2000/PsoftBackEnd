@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.DTO.ComentarioDTO;
 import psoft.ufcg.ajude.DTO.DoacaoDTO;
-import psoft.ufcg.ajude.DTO.RespostaComentarioDTO;
 import psoft.ufcg.ajude.entities.Campanha;
 import psoft.ufcg.ajude.entities.Comentario;
 import psoft.ufcg.ajude.entities.Doacao;
@@ -153,17 +152,17 @@ public class CampanhaController<authorization> {
 
 
     @PostMapping("campanha/comentario/resposta/{id}")
-    public ResponseEntity<RespostaComentarioDTO> responderComentario(@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @RequestBody RespostaComentario resposta) throws ServletException {
+    public ResponseEntity<ComentarioDTO> responderComentario(@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @RequestBody RespostaComentario resposta) throws ServletException {
         if (!jwtService.existeUsuario(authorization))
-            return new ResponseEntity<RespostaComentarioDTO>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
 
         Optional<Comentario> comentario = comentarioService.getCometario(id);
         resposta.setEmailDono(jwtService.getEmailPorToken(authorization));
 
         if (!comentario.isPresent())
-            return new ResponseEntity<RespostaComentarioDTO>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<ComentarioDTO>(HttpStatus.NOT_FOUND);
 
-        return new ResponseEntity<RespostaComentarioDTO>(comentarioService.respondeComentario(comentario.get().getId(), resposta), HttpStatus.CREATED);
+        return new ResponseEntity<ComentarioDTO>(comentarioService.respondeComentario(comentario.get().getId(), resposta), HttpStatus.CREATED);
     }
 
     @DeleteMapping("campanha/comentario/{id}")
