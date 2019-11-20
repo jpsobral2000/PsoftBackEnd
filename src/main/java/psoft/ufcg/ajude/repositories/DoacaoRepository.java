@@ -6,12 +6,13 @@ import psoft.ufcg.ajude.entities.Campanha;
 import psoft.ufcg.ajude.entities.Doacao;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 @Repository
 public interface DoacaoRepository<T, ID extends Serializable> extends JpaRepository<Doacao, Long> {
-    Optional<Set<Doacao>> findByUsuarioEmail(String email);
+    Optional<List<Doacao>> findByUsuarioEmail(String email);
     Optional<Set<Doacao>> findByCampanha(Campanha campanha);
     Optional<Set<Doacao>> findByUsuarioEmailAndCampanha(String email, Campanha campanha);
 }

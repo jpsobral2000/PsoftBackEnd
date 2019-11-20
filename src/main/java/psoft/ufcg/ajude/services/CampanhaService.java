@@ -1,5 +1,6 @@
 package psoft.ufcg.ajude.services;
 
+import org.mockito.internal.matchers.CompareTo;
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
 import psoft.ufcg.ajude.DTO.DoacaoDTO;
@@ -57,7 +58,7 @@ public class CampanhaService {
         return campanhaDTO;
     }
 
-    public CampanhaDTO transformaParaDTO(Campanha campanha){
+    public static CampanhaDTO transformaParaDTO(Campanha campanha){
         CampanhaDTO campanhaDTO = new CampanhaDTO();
 
         campanhaDTO.setNome(campanha.getNome());
@@ -69,6 +70,7 @@ public class CampanhaService {
         campanhaDTO.getDono().setSegundoNome(campanha.getDono().getSegundoNome());
         campanhaDTO.getDono().setEmail(campanha.getDono().getEmail());
         campanhaDTO.setLikes((long) campanha.getLikes().size());
+        campanhaDTO.setAcumulado(campanha.getAcumulado());
 
         return campanhaDTO;
     }
@@ -132,24 +134,21 @@ public class CampanhaService {
     }
 
     public List<CampanhaDTO> pesquisarNome (String substring, Boolean estado) {
-        substring = transformaURL(substring);
+        List<Campanha> campanhas = campanhaRepository.pesquisarSubstring(substring);
+        List<CampanhaDTO> campanhaDTOS = new ArrayList<CampanhaDTO>();
 
-        List<CampanhaDTO> result = new ArrayList<>();
-        List<Campanha> campanhas = campanhaRepository.findAll();
-        for (Campanha campanha : campanhas) {
+        if(!campanhas.isEmpty()){
+            for (Campanha campanha: campanhas){
+                if(estado && campanha.getStatus().equals(StatusCampanha.ATIVA))
+                    campanhaDTOS.add(transformaParaDTO(campanha));
+                else
+                    campanhaDTOS.add(transformaParaDTO(campanha));
 
-            if(estado) {
-                if (transformaURL(campanha.getNome()).contains(substring.toLowerCase()) && campanha.getStatus().equals(StatusCampanha.ATIVA)) {
-                    result.add(transformaParaDTO(campanha));
-                }
-            }
-            else{
-                if (transformaURL(campanha.getNome()).contains(substring.toLowerCase())) {
-                    result.add(transformaParaDTO(campanha));
-                }
             }
         }
-        return result;
+
+
+        return campanhaDTOS;
     }
 
     public CampanhaDTO curtirCampanha(Campanha campanha, String email) throws ServletException {
@@ -188,39 +187,80 @@ public class CampanhaService {
         doacaoRepository.save(doacao);
         campanha.setAcumulado(campanha.getAcumulado() + doacao.getValor());
 
-        Double faltaParaCampanha = 0.0;
+        Double falta = 0.0;
 
-        if(campanha.getMeta() - campanha.getAcumulado() > 0){
-            faltaParaCampanha = campanha.getMeta() - campanha.getAcumulado();
-        }
-        else{
-            faltaParaCampanha = 0.0;
-        }
+        falta = faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado());
 
         campanhaRepository.save(campanha);
 
-        DoacaoDTO doacaoDTO = new DoacaoDTO(campanha.getNome(), usuario.getEmail(), doacao.getValor(), faltaParaCampanha, doacao.getDate());
+        DoacaoDTO doacaoDTO = new DoacaoDTO(campanha.getNome(), usuario.getEmail(), doacao.getValor(), falta, doacao.getDate());
 
         return doacaoDTO;
 
     }
 
-    public CampanhaDTO buscarPrincipaisCampanhas(String vizualizacao) {
-        List<Campanha> campanhas = campanhaRepository.findAll();
-        if (vizualizacao.equals("meta")) {
+    private Double faltaParaCampanha(Double meta, Double acumulado){
+        if(meta - acumulado > 0){
+            return meta - acumulado;
+        }
+        else{
+            return 0.0;
+        }
+    }
 
+    public List<CampanhaDTO> buscarPrincipaisCampanhas(String vizualizacao) {
+        List<Campanha> campanhas = campanhaRepository.findAll();
+
+
+        if (vizualizacao.equals("meta")) {
+            campanhas.sort(new Comparator<Campanha>() {
+                @Override
+                public int compare(Campanha campanha, Campanha t1) {
+                    if (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) > faltaParaCampanha(t1.getMeta(), t1.getAcumulado()))
+                        return 1;
+                    else if(faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) < faltaParaCampanha(t1.getMeta(), t1.getAcumulado()))
+                        return -1;
+                    return 0;
+                }
+            });
         }
 
         else if (vizualizacao.equals("data")){
-
+            campanhas.sort(new Comparator<Campanha>() {
+                @Override
+                public int compare(Campanha campanha, Campanha t1) {
+                    if (campanha.getDeadline().after(t1.getDeadline()))
+                        return 1;
+                    else if(campanha.getDeadline().before(t1.getDeadline()))
+                        return -1;
+                    return 0;
+                }
+            });
         }
 
         else if(vizualizacao.equals("like")){
-
+            campanhas.sort(new Comparator<Campanha>() {
+                @Override
+                public int compare(Campanha campanha, Campanha t1) {
+                    if (campanha.getLikes().size() < t1.getLikes().size())
+                        return 1;
+                    else if(campanha.getLikes().size() > t1.getLikes().size())
+                        return -1;
+                    return 0;
+                }
+            });
         }
 
-        else {
+        List<CampanhaDTO> campanhaDTOS = new ArrayList<CampanhaDTO>();
 
+        for (Campanha campanha: campanhas){
+            campanhaDTOS.add(transformaParaDTO(campanha));
+
+            if(campanhaDTOS.size() == 5)
+                break;
         }
+
+        return campanhaDTOS;
+
     }
 }

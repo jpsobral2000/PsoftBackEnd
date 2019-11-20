@@ -1,0 +1,3 @@
+2019-11-20 16:38:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "ATIVA"; SQL statement:
+select campanha0_.nome as col_0_0_ from campanha campanha0_ where (campanha0_.url_campanha like ?) and campanha0_.status='ATIVA' [22018-199]

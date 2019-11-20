@@ -13,6 +13,8 @@ public class CampanhaDTO {
     @Temporal(TemporalType.DATE)
     private Date deadline;
 
+    private Double Acumulado;
+
     private StatusCampanha status;
 
     private Double meta;
@@ -49,6 +51,14 @@ public class CampanhaDTO {
 
     public Double getMeta() {
         return meta;
+    }
+
+    public Double getAcumulado() {
+        return Acumulado;
+    }
+
+    public void setAcumulado(Double acumulado) {
+        Acumulado = acumulado;
     }
 
     public void setDescricao(String descricao) {

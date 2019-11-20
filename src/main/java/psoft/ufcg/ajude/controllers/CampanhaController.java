@@ -218,7 +218,7 @@ public class CampanhaController<authorization> {
         if (!campanha.isPresent() || !jwtService.existeUsuario(authorization))
             return new ResponseEntity<DoacaoDTO>(HttpStatus.NOT_FOUND);
 
-        if (doacao.getValor() == null)
+        if (doacao.getValor() == null || doacao.getValor() <= 0)
             return new ResponseEntity<DoacaoDTO>(HttpStatus.BAD_REQUEST);
 
         String email = jwtService.getEmailPorToken(authorization);
@@ -228,8 +228,8 @@ public class CampanhaController<authorization> {
     }
 
     @GetMapping("campanha/principais")
-    public ResponseEntity<CampanhaDTO> campanhasPrinciipais(@RequestParam (name = "visualizacao", defaultValue = "meta") String vizualizacao){
-        return new ResponseEntity<CampanhaDTO>(campanhaService.buscarPrincipaisCampanhas(vizualizacao), HttpStatus.OK);
+    public ResponseEntity<List<CampanhaDTO>> campanhasPrinciipais(@RequestParam (name = "visualizacao", defaultValue = "meta") String visualizacao){
+        return new ResponseEntity<List<CampanhaDTO>>(campanhaService.buscarPrincipaisCampanhas(visualizacao), HttpStatus.OK);
 
     }
 

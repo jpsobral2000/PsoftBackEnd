@@ -21,9 +21,7 @@ public class Doacao {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idCampanha")
     private Campanha campanha;
-
-
-    @JsonIgnore
+    
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
