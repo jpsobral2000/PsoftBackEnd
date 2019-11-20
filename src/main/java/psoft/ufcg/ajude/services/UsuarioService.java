@@ -2,19 +2,31 @@ package psoft.ufcg.ajude.services;
 
 
 import org.springframework.stereotype.Service;
+import psoft.ufcg.ajude.DTO.PerfilDTO;
 import psoft.ufcg.ajude.DTO.UsuarioDTO;
+import psoft.ufcg.ajude.entities.Campanha;
+import psoft.ufcg.ajude.entities.Doacao;
 import psoft.ufcg.ajude.entities.Usuario;
+import psoft.ufcg.ajude.repositories.CampanhaRepository;
+import psoft.ufcg.ajude.repositories.DoacaoRepository;
 import psoft.ufcg.ajude.repositories.UsuarioRepository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UsuarioService {
     private UsuarioRepository<Usuario, String> usuarioRepository;
+    private CampanhaRepository<Campanha, Long> campanhaRepository;
+    private DoacaoRepository<Doacao, Long> doacaoRepository;
 
-    public UsuarioService(UsuarioRepository<Usuario, String> usuarioRepository){
+
+    public UsuarioService(UsuarioRepository<Usuario, String> usuarioRepository, CampanhaRepository campanhaRepository, DoacaoRepository doacaoRepository){
 
         this.usuarioRepository = usuarioRepository;
+        this.doacaoRepository = doacaoRepository;
+        this.campanhaRepository = campanhaRepository;
     }
 
     //TODO Quando cadastrar é preciso enviar um email de boas vindas.
@@ -53,5 +65,15 @@ public class UsuarioService {
             }
         }
         return arroba;
+    }
+
+
+    public PerfilDTO exibirPerfilUsuario(String email) {
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        UsuarioDTO usuarioDTO = transformaUsuarioEmDTO(usuario);
+        List<Campanha> campanhas = campanhaRepository.findByDonoEmail(email);
+        Optional<Set<Doacao>> doacoes = doacaoRepository.findByUsuarioEmail(email);
+
+        return new PerfilDTO(usuarioDTO, campanhas, doacoes.get());
     }
 }

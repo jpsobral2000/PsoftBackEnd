@@ -227,5 +227,13 @@ public class CampanhaController<authorization> {
 
     }
 
+    @GetMapping("campanha/principais")
+    public ResponseEntity<CampanhaDTO> campanhasPrinciipais(@RequestParam (name = "visualizacao", defaultValue = "meta") String vizualizacao){
+        return new ResponseEntity<CampanhaDTO>(campanhaService.buscarPrincipaisCampanhas(vizualizacao), HttpStatus.OK);
+
+    }
+
+
+
 }
 

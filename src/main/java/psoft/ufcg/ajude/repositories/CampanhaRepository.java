@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface CampanhaRepository<T, ID extends Serializable> extends JpaRepository<Campanha, Long> {
     List<Campanha> findByDonoEmail(String email);
     Optional<Campanha> findByUrlCampanha(String urlCampanha);
+
 }

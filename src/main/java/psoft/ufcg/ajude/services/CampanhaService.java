@@ -195,7 +195,6 @@ public class CampanhaService {
         }
         else{
             faltaParaCampanha = 0.0;
-            campanha.setStatus(StatusCampanha.VENCIDA);
         }
 
         campanhaRepository.save(campanha);
@@ -204,5 +203,24 @@ public class CampanhaService {
 
         return doacaoDTO;
 
+    }
+
+    public CampanhaDTO buscarPrincipaisCampanhas(String vizualizacao) {
+        List<Campanha> campanhas = campanhaRepository.findAll();
+        if (vizualizacao.equals("meta")) {
+
+        }
+
+        else if (vizualizacao.equals("data")){
+
+        }
+
+        else if(vizualizacao.equals("like")){
+
+        }
+
+        else {
+
+        }
     }
 }
