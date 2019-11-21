@@ -1,56 +1,61 @@
 package psoft.ufcg.ajude.services;
 
-import com.sendgrid.Method;
-import com.sendgrid.Request;
-import com.sendgrid.Response;
-import com.sendgrid.SendGrid;
-import com.sendgrid.helpers.mail.Mail;
-import com.sendgrid.helpers.mail.objects.Content;
-import com.sendgrid.helpers.mail.objects.Email;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-
-import java.io.IOException;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 
 @Service
 public class EmailService {
-    @Value("${app.sendgrid.key}")
-    private SendGrid appkey;
 
-    @Value("${app.sendgrid.templateId}")
-    private String templateId;
+    public EmailService(){
 
-    public String sendEmail(String email) {
+    }
+
+    public static void enviaEmail(String email) throws RuntimeException {
+        Properties props = new Properties();
+        /** Parâmetros de conexão com servidor Gmail */
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
+
+        Session session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication()
+                    {
+                        return new PasswordAuthentication("ajude.org@gmail.com",
+                                "ajude2019");
+                    }
+                });
+
+    /** Ativa Debug para sessão
+    session.setDebug(true); */
 
         try {
-        Mail mail = prepareMail(email);
-        Request request = new Request();
-        request.setMethod(Method.POST);
-        request.setEndpoint("mail/send");
-        request.setBody(mail.build());
-        Response response = appkey.api(request);
 
-        if (response != null)
-            System.out.println("response code from sendgrid" + response.getHeaders());
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("ajude.org@gmail.com"));
+            //Remetente
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "Erro ao enviar o email";
+            Address[] toUser = InternetAddress //Destinatário(s)
+                    .parse(email);
+
+            message.setRecipients(Message.RecipientType.TO, toUser);
+            message.setSubject("AJuDE");//Assunto
+            message.setText("Obrigado por ser cadastrar em nosso site" +
+                    "volte para nosso site https://ajudepsoftw.herokuapp.com/");
+            Transport.send(message);
+
+
+        } catch (MessagingException e) {
+           throw  new RuntimeException(e);
         }
-        return "Email enviado com sucesso";
-    }
-
-    private Mail prepareMail(String email) {
-        Email fromEmail = new Email();
-        fromEmail.setEmail("jpsobral2000@gmail.com");
-        String sujeito = "AJuDE";
-        Email to = new Email();
-        to.setEmail(email);
-        Content content = new Content("text/html", "Seja Bem Vindo");
-        Mail mail = new Mail(fromEmail, sujeito, to, content);
-        mail.setTemplateId(templateId);
-        return mail;
     }
 }
+

@@ -37,7 +37,7 @@ public class UsuarioController {
         if(optionalUsuario.isPresent())
             return new ResponseEntity<UsuarioDTO>(HttpStatus.CONFLICT);
         else
-            emailService.sendEmail(usuario.getEmail());
+            emailService.enviaEmail(usuario.getEmail());
 
         return new ResponseEntity<UsuarioDTO>(this.usuarioService.adicionaUsuario(usuario), HttpStatus.CREATED);
     }
