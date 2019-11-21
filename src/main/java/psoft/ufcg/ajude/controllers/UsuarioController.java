@@ -14,6 +14,7 @@ import psoft.ufcg.ajude.services.UsuarioService;
 import javax.servlet.ServletException;
 import java.util.Optional;
 
+@RequestMapping("/api")
 @RestController
 public class UsuarioController {
     private UsuarioService usuarioService;

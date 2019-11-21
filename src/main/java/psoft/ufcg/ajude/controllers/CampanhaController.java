@@ -19,7 +19,7 @@ import javax.servlet.ServletException;
 import java.util.List;
 import java.util.Optional;
 
-
+@RequestMapping("/api")
 @RestController
 public class CampanhaController<authorization> {
 
