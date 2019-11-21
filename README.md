@@ -11,7 +11,7 @@ Alunos: Felipe de Amorim e Joao Pedro Santa Cruz
 
 - Link para a demonstracao da aplicacao (video do youtube):
 
-- Link para a documentacao da api: https://ajudepsoftw.herokuapp.com/swagger-ui.htm
+- Link para a documentacao da api: http://ajudepsoftw.herokuapp.com/swagger-ui.html
 
 - Link da aplicação operacional implantada e integrada com frontend:
 
