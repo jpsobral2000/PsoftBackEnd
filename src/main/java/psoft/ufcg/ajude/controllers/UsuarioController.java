@@ -14,6 +14,7 @@ import psoft.ufcg.ajude.services.UsuarioService;
 import javax.servlet.ServletException;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://127.0.0.1:8000", maxAge = 3600)
 @RequestMapping("/api")
 @RestController
 public class UsuarioController {
@@ -33,6 +34,7 @@ public class UsuarioController {
 
     @PostMapping("/usuario/cadastro")
     public ResponseEntity<UsuarioDTO> cadastraUsuario(@RequestBody Usuario usuario){
+        System.out.println(usuario.getEmail());
         Optional<Usuario> optionalUsuario = this.usuarioService.getUsuario(usuario.getEmail());
 
         if(optionalUsuario.isPresent())
