@@ -12,10 +12,7 @@ import psoft.ufcg.ajude.repositories.CampanhaRepository;
 import psoft.ufcg.ajude.repositories.DoacaoRepository;
 import psoft.ufcg.ajude.repositories.UsuarioRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UsuarioService {
@@ -34,6 +31,7 @@ public class UsuarioService {
     //TODO Quando cadastrar é preciso enviar um email de boas vindas.
 
     public UsuarioDTO adicionaUsuario(Usuario usuario){
+        usuario.setDoacoes(new HashSet<Doacao>());
         this.usuarioRepository.save(usuario);
         return transformaUsuarioEmDTO(usuario);
 
@@ -65,6 +63,9 @@ public class UsuarioService {
         for(Campanha campanha: campanhas){
             campanhaDTOS.add(CampanhaService.transformaParaDTO(campanha));
         }
+
+        if(!doacoes.isPresent())
+            return new PerfilDTO(usuarioDTO, campanhaDTOS, new ArrayList<>());
 
         return new PerfilDTO(usuarioDTO, campanhaDTOS, doacoes.get());
     }
