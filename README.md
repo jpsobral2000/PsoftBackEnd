@@ -2,9 +2,12 @@ Alunos: Felipe de Amorim e Joao Pedro Santa Cruz
 
 # PsoftBackEnd
 
- - Token tempo de inspiracao é de uma semana, botamos esse tempo pois é um tempo grande para que o usuario nao precise
- ficar se logando toda hora, nem grande demais pois, se ele tem um tempo muito grande aumenta as chances do token
- vazar
+ - Token tempo de inspiracao é de duas horas, botamos esse tempo pois é um tempo grande para que o usuario nao precise
+  ficar se logando toda hora, consiga navegar no site com um tempo tranquilo, nao botamos ele muito grande pois no site
+  contem informacoes muito importanto como o cartao do cliente, por isso nao botamos ele com um tempo tao grande afim de
+  proteger contra pessoas que possam ter acesso a essas informacoes pelo proprio celular/computador do usuario cadastrado
+
+
 
 
 # Links

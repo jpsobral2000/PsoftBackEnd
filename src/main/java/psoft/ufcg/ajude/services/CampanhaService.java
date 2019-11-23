@@ -177,8 +177,8 @@ public class CampanhaService {
 
     public DoacaoDTO realizarDoacaoCampanha(Campanha campanha, String email, Doacao doacao) throws ServletException {
 
-        if(campanha.getStatus().equals(StatusCampanha.CONCLUIDA) || campanha.getStatus().equals(StatusCampanha.ENCERRADA))
-            throw new ServletException("Não é possível realizar doação para campanhas concluidas ou encerradas");
+        if(campanha.getStatus().equals(StatusCampanha.CONCLUIDA) || campanha.getStatus().equals(StatusCampanha.ENCERRADA)|| campanha.getStatus().equals(StatusCampanha.VENCIDA))
+            throw new ServletException("Não é possível realizar doação para campanhas concluidas, vencidas ou encerradas");
 
         doacao.setCampanha(campanha);
         Usuario usuario = usuarioRepository.findByEmail(email);
@@ -216,9 +216,11 @@ public class CampanhaService {
             campanhas.sort(new Comparator<Campanha>() {
                 @Override
                 public int compare(Campanha campanha, Campanha t1) {
-                    if (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) > faltaParaCampanha(t1.getMeta(), t1.getAcumulado()))
+                    if (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) > faltaParaCampanha(t1.getMeta(), t1.getAcumulado()) &&
+                            (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0))
                         return 1;
-                    else if(faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) < faltaParaCampanha(t1.getMeta(), t1.getAcumulado()))
+                    else if(faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) < faltaParaCampanha(t1.getMeta(), t1.getAcumulado()) &&
+                            (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0))
                         return -1;
                     return 0;
                 }
