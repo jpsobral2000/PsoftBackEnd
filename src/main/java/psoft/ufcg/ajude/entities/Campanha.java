@@ -1,6 +1,8 @@
 package psoft.ufcg.ajude.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import psoft.ufcg.ajude.enums.StatusCampanha;
 
 import javax.persistence.*;
@@ -10,38 +12,51 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@ApiModel(value = "Campanha")
 public class Campanha implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
+    @ApiModelProperty(value = "nome da campanha.")
     private String nome;
 
-
+    @ApiModelProperty(value = "url de acesso da campanha.")
     private String urlCampanha;
 
+    @ApiModelProperty(value = "descricao da campanha.")
     private String descricao;
 
+    @ApiModelProperty(value = "data do prazo da campanha.")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deadline;
 
+    @ApiModelProperty(value = "status da campanha.")
     private StatusCampanha status;
+
+    @ApiModelProperty(value = "meta, em dinheiro, da campanha.")
     private Double meta;
 
+    @ApiModelProperty(value = "valor acumulado ate o momento pela campanha.")
     @JsonIgnore
     private Double acumulado;
 
+    @ApiModelProperty(value = "usuario que criou a campanha.")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idDono")
     private Usuario dono;
 
+    @ApiModelProperty(value = "lista dos comentarios da campanha.")
     @OneToMany(mappedBy = "campanha", fetch = FetchType.EAGER)
     private List<Comentario> comentarios;
 
+    @ApiModelProperty(value = "numero de likes da campanha.")
     @OneToMany(mappedBy = "campanha",fetch = FetchType.EAGER)
     private Set<LikeB> likes;
 
+    @ApiModelProperty(value = "doacoes realizadas para a campanha.")
     @OneToMany(mappedBy = "campanha",fetch = FetchType.EAGER)
     private Set<Doacao> doacoes;
 

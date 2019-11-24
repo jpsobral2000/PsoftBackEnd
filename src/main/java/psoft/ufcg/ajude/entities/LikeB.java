@@ -1,19 +1,26 @@
 package psoft.ufcg.ajude.entities;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
+@ApiModel(value = "curtida")
 @Entity
 public class LikeB {
 
+    @ApiModelProperty(value = "id da curtida.")
     @GeneratedValue
     @Id
     private Long id;
 
+    @ApiModelProperty(value = "usuario que curtiu.")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
+    @ApiModelProperty(value = "campanha na qual o usuario curtiu.")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idCampanha")
     private Campanha campanha;

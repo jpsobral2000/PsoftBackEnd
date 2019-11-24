@@ -1,5 +1,8 @@
 package psoft.ufcg.ajude.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,7 @@ import javax.servlet.ServletException;
 import java.util.List;
 import java.util.Optional;
 
+@Api(value = "Campanha api")
 @RequestMapping("/api")
 @RestController
 public class CampanhaController<authorization> {
@@ -33,8 +37,9 @@ public class CampanhaController<authorization> {
         this.comentarioService = comentarioService;
     }
 
+    @ApiOperation(value = "cria uma campanha")
     @PostMapping("/campanha/cadastro")
-    public ResponseEntity<CampanhaDTO> cadastraCampanha(@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
+    public ResponseEntity<CampanhaDTO> cadastraCampanha(@ApiParam(value = "usuario que deseja se logar")@RequestBody Campanha campanha, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
         Optional<Campanha> checkCampanha = campanhaService.getCampanha(campanhaService.transformaURL(campanha.getNome()));
 
 
@@ -59,8 +64,9 @@ public class CampanhaController<authorization> {
         return new ResponseEntity<CampanhaDTO>(campanhaService.adicionaCampanha(campanha, emailDono), HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "acessa a uma determinada campanha a partir do nome dela")
     @GetMapping("/campanha/{nome}")
-    public ResponseEntity<CampanhaDTO> getCampanha(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
+    public ResponseEntity<CampanhaDTO> getCampanha(@ApiParam(value = "nome da campanha")@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
         if (!jwtService.existeUsuario(authorization)) {
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
         }
@@ -74,8 +80,9 @@ public class CampanhaController<authorization> {
         return new ResponseEntity<CampanhaDTO>(HttpStatus.NOT_FOUND);
     }
 
+    @ApiOperation(value = "pesquisa uma sampanha a partir de sua substring")
     @GetMapping("/campanha/pesquisar/{nome}")
-    public ResponseEntity<List<CampanhaDTO>> pesquisaPorNome(@PathVariable String nome, @RequestParam(name = "estado", defaultValue = "true") Boolean estado, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
+    public ResponseEntity<List<CampanhaDTO>> pesquisaPorNome(@ApiParam(value = "substring do nome da campanha")@PathVariable String nome, @ApiParam(value = "status da campanha")@RequestParam(name = "estado", defaultValue = "true") Boolean estado, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
 
 
         if (!jwtService.existeUsuario(authorizarion)) {
@@ -93,8 +100,9 @@ public class CampanhaController<authorization> {
         return new ResponseEntity<List<CampanhaDTO>>(HttpStatus.NOT_FOUND);
     }
 
+    @ApiOperation(value = "modifica uma campanha")
     @PutMapping("campanha/{nome}")
-    public ResponseEntity<CampanhaDTO> editaCampanha(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization, @RequestBody CampanhaDTO campanha) throws ServletException {
+    public ResponseEntity<CampanhaDTO> editaCampanha(@ApiParam(value = "nome da campanha")@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization,@ApiParam(value = "campanha modificada") @RequestBody CampanhaDTO campanha) throws ServletException {
 
         if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<CampanhaDTO>(HttpStatus.UNAUTHORIZED);
@@ -114,8 +122,9 @@ public class CampanhaController<authorization> {
         return new ResponseEntity<CampanhaDTO>(campanhaService.modificaCampanha(campanha, nome), HttpStatus.ACCEPTED);
     }
 
+    @ApiOperation(value = "comenta em uma campanha na qual voce tem acesso")
     @PostMapping("campanha/comentario/{nome}")
-    public ResponseEntity<ComentarioDTO> comentaCampanha(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization, @RequestBody Comentario comentario) throws ServletException {
+    public ResponseEntity<ComentarioDTO> comentaCampanha(@ApiParam(value = "nome da campanha")@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization, @ApiParam(value = "comentario feito")@RequestBody Comentario comentario) throws ServletException {
 
         if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
@@ -135,8 +144,9 @@ public class CampanhaController<authorization> {
         return new ResponseEntity<ComentarioDTO>(comentarioService.adicionaComentario(comentario), HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "exibi os comentarios de uma campanha")
     @GetMapping("campanha/comentario/{nome}")
-    public ResponseEntity<List<ComentarioDTO>> getComentarios(@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
+    public ResponseEntity<List<ComentarioDTO>> getComentarios(@ApiParam(value = "nome da campnaha")@PathVariable String nome, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
 
         if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<List<ComentarioDTO>>(HttpStatus.UNAUTHORIZED);
@@ -151,8 +161,9 @@ public class CampanhaController<authorization> {
     }
 
 
+    @ApiOperation(value = "responde um comentario de uma campanha")
     @PostMapping("campanha/comentario/resposta/{id}")
-    public ResponseEntity<ComentarioDTO> responderComentario(@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @RequestBody RespostaComentario resposta) throws ServletException {
+    public ResponseEntity<ComentarioDTO> responderComentario(@ApiParam(value = "id do comentario respondido")@PathVariable Long id, @RequestHeader(value = "Authorization") String authorization, @ApiParam(value = "resposta feita")@RequestBody RespostaComentario resposta) throws ServletException {
         if (!jwtService.existeUsuario(authorization))
             return new ResponseEntity<ComentarioDTO>(HttpStatus.UNAUTHORIZED);
 
@@ -165,8 +176,9 @@ public class CampanhaController<authorization> {
         return new ResponseEntity<ComentarioDTO>(comentarioService.respondeComentario(comentario.get().getId(), resposta), HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "deleta um comentario que voce escreveu")
     @DeleteMapping("campanha/comentario/{id}")
-    public ResponseEntity<ComentarioDTO> apagarComentario (@PathVariable Long id, @RequestHeader (value = "Authorization") String authorization) throws ServletException {
+    public ResponseEntity<ComentarioDTO> apagarComentario (@ApiParam(value = "id do comentario")@PathVariable Long id, @RequestHeader (value = "Authorization") String authorization) throws ServletException {
 
         Optional<Comentario> comentario = comentarioService.getCometario(id);
         Optional<RespostaComentario> respostaComentario = comentarioService.getRespostaComentario(id);
@@ -181,8 +193,9 @@ public class CampanhaController<authorization> {
 
     }
 
+    @ApiOperation(value = "curti uma campanha")
     @PostMapping("campanha/curtir/{nome}")
-    public ResponseEntity<CampanhaDTO> colocarCurtidaCampanha (@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization) throws ServletException {
+    public ResponseEntity<CampanhaDTO> colocarCurtidaCampanha (@ApiParam(value = "nome da campanha")@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization) throws ServletException {
 
         Optional<Campanha> campanha = campanhaService.getCampanha(nome);
         if (!campanha.isPresent() || !jwtService.existeUsuario(authorization))
@@ -197,8 +210,9 @@ public class CampanhaController<authorization> {
 
     }
 
+    @ApiOperation(value = "descurti uma campnaha ja curtida anteriormente por voce")
     @DeleteMapping("campanha/curtir/{nome}")
-    public ResponseEntity<CampanhaDTO> retirarCurtidaCampanha (@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization) throws ServletException {
+    public ResponseEntity<CampanhaDTO> retirarCurtidaCampanha (@ApiParam(value = "nome da campanha")@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization) throws ServletException {
 
         Optional<Campanha> campanha = campanhaService.getCampanha(nome);
         if (!campanha.isPresent() || !jwtService.existeUsuario(authorization))
@@ -211,8 +225,9 @@ public class CampanhaController<authorization> {
 
     }
 
+    @ApiOperation(value = "doa um valor para uma campanha")
     @PostMapping("campanha/doar/{nome}")
-    public ResponseEntity<DoacaoDTO> realizarDoacao(@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization, @RequestBody Doacao doacao) throws ServletException {
+    public ResponseEntity<DoacaoDTO> realizarDoacao(@ApiParam(value = "nome da campanha")@PathVariable String nome, @RequestHeader (value = "Authorization")String authorization, @ApiParam(value = "doacao feita")@RequestBody Doacao doacao) throws ServletException {
 
         Optional<Campanha> campanha = campanhaService.getCampanha(nome);
         if (!campanha.isPresent() || !jwtService.existeUsuario(authorization))
@@ -227,8 +242,9 @@ public class CampanhaController<authorization> {
 
     }
 
+    @ApiOperation(value = "exibi as principais campanhas por meta, proximidade da data de vencimento, curtidas")
     @GetMapping("campanha/principais")
-    public ResponseEntity<List<CampanhaDTO>> campanhasPrinciipais(@RequestParam (name = "visualizacao", defaultValue = "meta") String visualizacao){
+    public ResponseEntity<List<CampanhaDTO>> campanhasPrinciipais(@ApiParam(value = "forma de visualizacao desejada")@RequestParam (name = "visualizacao", defaultValue = "meta") String visualizacao){
         return new ResponseEntity<List<CampanhaDTO>>(campanhaService.buscarPrincipaisCampanhas(visualizacao), HttpStatus.OK);
 
     }

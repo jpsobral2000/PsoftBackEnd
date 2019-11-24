@@ -1,8 +1,18 @@
 package psoft.ufcg.ajude.DTO;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "usuario")
 public class UsuarioDTO {
+
+    @ApiModelProperty(value = "email do usuario.")
     private String email;
+
+    @ApiModelProperty(value = "primeiro nome do usuario.")
     private String primeiroNome;
+
+    @ApiModelProperty(value = "sobrenome do usuario.")
     private String segundoNome;
 
     public UsuarioDTO(){}

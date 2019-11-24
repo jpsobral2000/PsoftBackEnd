@@ -1,6 +1,9 @@
 package psoft.ufcg.ajude.controllers;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://127.0.0.1:8000", maxAge = 3600)
 @RequestMapping("/api")
+@Api(value = "Campanha api")
 @RestController
 public class UsuarioController {
     private UsuarioService usuarioService;
@@ -32,8 +36,9 @@ public class UsuarioController {
 
 
 
+    @ApiOperation(value = "cadastra um usuario")
     @PostMapping("/usuario/cadastro")
-    public ResponseEntity<UsuarioDTO> cadastraUsuario(@RequestBody Usuario usuario){
+    public ResponseEntity<UsuarioDTO> cadastraUsuario(@ApiParam(value = "usuario que deseja se cadastrar")@RequestBody Usuario usuario){
         Optional<Usuario> optionalUsuario = this.usuarioService.getUsuario(usuario.getEmail());
 
         if(optionalUsuario.isPresent())
@@ -44,8 +49,9 @@ public class UsuarioController {
         return new ResponseEntity<UsuarioDTO>(this.usuarioService.adicionaUsuario(usuario), HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "entra no perfil de um usuario")
     @GetMapping("/usuario/{email}")
-    public ResponseEntity<PerfilDTO> getUsuario(@PathVariable String email, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
+    public ResponseEntity<PerfilDTO> getUsuario(@ApiParam(value = "email do usuario")@PathVariable String email, @RequestHeader(value = "Authorization") String authorization) throws ServletException {
         Optional<Usuario> usuario = this.usuarioService.getUsuario(email);
 
         if (!jwtService.existeUsuario(authorization))
@@ -60,6 +66,7 @@ public class UsuarioController {
 
     }
 
+    @ApiOperation(value = "pega o dono do token")
     @GetMapping("/usuario/propietario")
     public ResponseEntity<PerfilDTO> usuarioDonoDoToken(@RequestHeader(value = "Authorization") String authorization) throws ServletException {
         Optional<Usuario> usuario = this.usuarioService.getUsuario(jwtService.getEmailPorToken(authorization));

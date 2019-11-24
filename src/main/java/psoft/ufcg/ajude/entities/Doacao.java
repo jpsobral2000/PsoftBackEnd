@@ -1,30 +1,38 @@
 package psoft.ufcg.ajude.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@ApiModel(value = "Doacao")
 @Entity
 public class Doacao {
 
+    @ApiModelProperty(value = "id da doacao.")
     @GeneratedValue
     @Id
     private Long id;
 
+    @ApiModelProperty(value = "usuario que fez a doacao.")
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
+    @ApiModelProperty(value = "campanha na qual a doacao foi feita.")
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idCampanha")
     private Campanha campanha;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
 
+    @ApiModelProperty(value = "data da doacao.")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataDaDoacao;
+
+    @ApiModelProperty(value = "valor a ser doado.")
     private Double valor;
 
     public Doacao(){}
@@ -61,11 +69,11 @@ public class Doacao {
         this.campanha = campanha;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDataDaDoacao() {
+        return dataDaDoacao;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDataDaDoacao(Date dataDaDoacao) {
+        this.dataDaDoacao = dataDaDoacao;
     }
 }

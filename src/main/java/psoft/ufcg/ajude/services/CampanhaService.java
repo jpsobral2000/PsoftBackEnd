@@ -183,7 +183,7 @@ public class CampanhaService {
         doacao.setCampanha(campanha);
         Usuario usuario = usuarioRepository.findByEmail(email);
         doacao.setUsuario(usuario);
-        doacao.setDate(Date.from(Instant.now()));
+        doacao.setDataDaDoacao(Date.from(Instant.now()));
         doacaoRepository.save(doacao);
         campanha.setAcumulado(campanha.getAcumulado() + doacao.getValor());
 
@@ -193,7 +193,7 @@ public class CampanhaService {
 
         campanhaRepository.save(campanha);
 
-        DoacaoDTO doacaoDTO = new DoacaoDTO(campanha.getNome(), usuario.getEmail(), doacao.getValor(), falta, doacao.getDate());
+        DoacaoDTO doacaoDTO = new DoacaoDTO(campanha.getNome(), usuario.getEmail(), doacao.getValor(), falta, doacao.getDataDaDoacao());
 
         return doacaoDTO;
 

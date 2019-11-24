@@ -1,24 +1,33 @@
 package psoft.ufcg.ajude.DTO;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
+@ApiModel(value = "Doacao")
 public class DoacaoDTO {
+    @ApiModelProperty(value = "email do doador.")
     private String emailUsuario;
 
+    @ApiModelProperty(value = "nome da campanha em que esta sendo doada.")
     private String nomeCampanha;
 
+    @ApiModelProperty(value = "valor a ser doado.")
     private Double valor;
 
+    @ApiModelProperty(value = "valor restante que falta para cumprir a meta.")
     private Double valorRestanteParaAMeta;
 
-    private Date dataDeCriacao;
+    @ApiModelProperty(value = "data da doacao.")
+    private Date dataDaDoacao;
 
-    public DoacaoDTO(String nomeCampanha, String emailUsuario, Double valor, Double valorRestanteParaAMeta, Date dataDeCriacao){
+    public DoacaoDTO(String nomeCampanha, String emailUsuario, Double valor, Double valorRestanteParaAMeta, Date dataDaDoacao){
         this.emailUsuario = emailUsuario;
         this.nomeCampanha = nomeCampanha;
         this.valor = valor;
         this.valorRestanteParaAMeta = valorRestanteParaAMeta;
-        this.dataDeCriacao = dataDeCriacao;
+        this.dataDaDoacao = dataDaDoacao;
     }
 
     public String getNomeCampanha() {
@@ -53,11 +62,11 @@ public class DoacaoDTO {
         this.valorRestanteParaAMeta = valorRestanteParaAMeta;
     }
 
-    public Date getDataDeCriacao() {
-        return dataDeCriacao;
+    public Date getDataDaDoacao() {
+        return dataDaDoacao;
     }
 
-    public void setDataDeCriacao(Date dataDeCriacao) {
-        this.dataDeCriacao = dataDeCriacao;
+    public void setDataDaDoacao(Date dataDaDoacao) {
+        this.dataDaDoacao = dataDaDoacao;
     }
 }

@@ -1,28 +1,39 @@
 package psoft.ufcg.ajude.DTO;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import psoft.ufcg.ajude.enums.StatusCampanha;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
+@ApiModel(value = "Campanha")
 public class CampanhaDTO {
 
+    @ApiModelProperty(value = "nome da campanha.")
+    private String nome;
+
+    @ApiModelProperty(value = "descricao da campanha.")
     private String descricao;
 
+    @ApiModelProperty(value = "data do prazo da campanha.")
     @Temporal(TemporalType.DATE)
     private Date deadline;
 
+    @ApiModelProperty(value = "valor acumulado ate o momento pela campanha.")
     private Double Acumulado;
 
+    @ApiModelProperty(value = "status da campanha.")
     private StatusCampanha status;
 
+    @ApiModelProperty(value = "meta, em dinheiro, da campanha.")
     private Double meta;
 
-    private String nome;
-
+    @ApiModelProperty(value = "usuario que criou a campanha.")
     private UsuarioDTO dono;
 
+    @ApiModelProperty(value = "numero de likes da campanha.")
     private Long likes;
 
     public CampanhaDTO(){

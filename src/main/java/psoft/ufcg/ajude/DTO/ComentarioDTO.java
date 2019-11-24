@@ -1,20 +1,34 @@
 package psoft.ufcg.ajude.DTO;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 import java.util.List;
 
+@ApiModel(value = "Comentario")
 public class ComentarioDTO {
+
+    @ApiModelProperty(value = "id do comentario.")
     private long id;
+
+    @ApiModelProperty(value = "mensagem digitada como comentario.")
     private String mensagem;
+
+    @ApiModelProperty(value = "email do dono do comentario.")
     private String email;
-    private Date horaDeCriacao;
+
+    @ApiModelProperty(value = "horario que o comentario foi feito.")
+    private Date horarioDoPost;
+
+    @ApiModelProperty(value = "lista das respostas do comentario.")
     private List<ComentarioDTO> respostaComentarios;
 
     public ComentarioDTO(Long id, String mensagem, String email, Date hdc, List<ComentarioDTO> respostaComentarios){
         this.id = id;
         this.mensagem = mensagem;
         this.email = email;
-        this.horaDeCriacao = hdc;
+        this.horarioDoPost = hdc;
         this.respostaComentarios = respostaComentarios;
     }
 
@@ -27,12 +41,13 @@ public class ComentarioDTO {
     }
 
     public Date getHoraDeCriacao() {
-        return horaDeCriacao;
+        return horarioDoPost;
     }
 
     public void setHoraDeCriacao(Date horaDeCriacao) {
-        this.horaDeCriacao = horaDeCriacao;
+        this.horarioDoPost = horaDeCriacao;
     }
+
 
     public String getMensagem() {
         return mensagem;

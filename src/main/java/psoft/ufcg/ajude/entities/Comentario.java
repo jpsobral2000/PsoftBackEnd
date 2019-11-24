@@ -1,27 +1,38 @@
 package psoft.ufcg.ajude.entities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@ApiModel(value = "Comentario")
 @Entity
 @SequenceGenerator(name="seq", initialValue=1)
 public class Comentario {
 
+    @ApiModelProperty(value = "id do comentario.")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Id
     private long id;
+
+    @ApiModelProperty(value = "mensagem digitada como comentario.")
     private String mensagem;
+
+    @ApiModelProperty(value = "email do dono do comentario.")
     private String emailDono;
 
+    @ApiModelProperty(value = "horario que o comentario foi feito.")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date horaDeCriacao;
+    private Date horarioDoPost;
 
+    @ApiModelProperty(value = "campanha em que foi feita o comentario.")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idCampanha")
     private Campanha campanha;
 
-
+    @ApiModelProperty(value = "lista das respostas do comentario.")
     @OneToMany(mappedBy = "comentario", fetch = FetchType.EAGER)
     private List<RespostaComentario> respostas;
 
@@ -68,12 +79,12 @@ public class Comentario {
         this.campanha = campanha;
     }
 
-    public Date getHoraDeCriacao() {
-        return horaDeCriacao;
+    public Date getHorarioDoPost() {
+        return horarioDoPost;
     }
 
-    public void setHoraDeCriacao(Date horaDeCriacao) {
-        this.horaDeCriacao = horaDeCriacao;
+    public void setHorarioDoPost(Date horarioDoPost) {
+        this.horarioDoPost = horarioDoPost;
     }
 
 }

@@ -31,7 +31,7 @@ public class ComentarioService {
     }
 
     public ComentarioDTO adicionaComentario(Comentario comentario){
-        comentario.setHoraDeCriacao(Date.from(Instant.now()));
+        comentario.setHorarioDoPost(Date.from(Instant.now()));
         comentarioRepository.save(comentario);
 
         return transformaComentarioDTO(comentario);
@@ -61,9 +61,9 @@ public class ComentarioService {
         Optional<Comentario> comentario = comentarioRepository.findById(id);
         List<RespostaComentario> respostas = comentario.get().getRespostas();
         resposta.setComentario(comentario.get());
-        resposta.setHoraDeCriacao(Date.from(Instant.now()));
+        resposta.setHorarioDoPost(Date.from(Instant.now()));
         respostaComentarioRepository.save(resposta);
-        return new ComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono(), resposta.getHoraDeCriacao(), null);
+        return new ComentarioDTO(resposta.getId(), resposta.getMensagem(), resposta.getEmailDono(), resposta.getHorarioDoPost(), null);
     }
 
     private ComentarioDTO transformaComentarioDTO(Comentario comentario){
@@ -74,11 +74,11 @@ public class ComentarioService {
 
         if(!comentario.getRespostas().isEmpty()) {
             for (RespostaComentario respostaComentario : comentario.getRespostas()) {
-                respostaComentarioDTO.add(new ComentarioDTO(respostaComentario.getId(), respostaComentario.getMensagem(), respostaComentario.getEmailDono(), respostaComentario.getHoraDeCriacao(), null));
+                respostaComentarioDTO.add(new ComentarioDTO(respostaComentario.getId(), respostaComentario.getMensagem(), respostaComentario.getEmailDono(), respostaComentario.getHorarioDoPost(), null));
             }
         }
 
-        return new ComentarioDTO(comentario.getId(), comentario.getMensagem(), comentario.getEmailDono(), comentario.getHoraDeCriacao(), respostaComentarioDTO);
+        return new ComentarioDTO(comentario.getId(), comentario.getMensagem(), comentario.getEmailDono(), comentario.getHorarioDoPost(), respostaComentarioDTO);
     }
 
     public ComentarioDTO deletarComentario(Long id) {
@@ -102,7 +102,7 @@ public class ComentarioService {
             return comentarioDTO;
         }
         else{
-            ComentarioDTO comentarioDTO = new ComentarioDTO(respostaComentario.get().getId(), respostaComentario.get().getMensagem(), respostaComentario.get().getEmailDono(), respostaComentario.get().getHoraDeCriacao(), null);
+            ComentarioDTO comentarioDTO = new ComentarioDTO(respostaComentario.get().getId(), respostaComentario.get().getMensagem(), respostaComentario.get().getEmailDono(), respostaComentario.get().getHorarioDoPost(), null);
 
             respostaComentarioRepository.deleteById(id);
 
