@@ -139,6 +139,7 @@ public class CampanhaService {
 
         if(!campanhas.isEmpty()){
             for (Campanha campanha: campanhas){
+                checkaStatus(campanha);
                 if(estado && campanha.getStatus().equals(StatusCampanha.ATIVA))
                     campanhaDTOS.add(transformaParaDTO(campanha));
                 else
@@ -211,13 +212,17 @@ public class CampanhaService {
     public List<CampanhaDTO> buscarPrincipaisCampanhas(String vizualizacao) {
         List<Campanha> campanhas = campanhaRepository.findAll();
 
+        for (Campanha campanha: campanhas) {
+            checkaStatus(campanha);
+        }
+
 
         if (vizualizacao.equals("meta")) {
             campanhas.sort(new Comparator<Campanha>() {
                 @Override
                 public int compare(Campanha campanha, Campanha t1) {
                     if (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) > faltaParaCampanha(t1.getMeta(), t1.getAcumulado()) &&
-                            (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0))
+                            (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0) )
                         return 1;
                     else if(faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) < faltaParaCampanha(t1.getMeta(), t1.getAcumulado()) &&
                             (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0))
@@ -264,5 +269,14 @@ public class CampanhaService {
 
         return campanhaDTOS;
 
+    }
+
+    private void checkaStatus(Campanha campanha) {
+        if (campanha.getDeadline().before(Date.from(Instant.now()))&& campanha.getAcumulado() < campanha.getMeta()){
+            campanha.setStatus(StatusCampanha.VENCIDA);
+        }
+         else if (campanha.getDeadline().before(Date.from(Instant.now()))&& campanha.getAcumulado() >= campanha.getMeta()){
+             campanha.setStatus(StatusCampanha.CONCLUIDA);
+        }
     }
 }
