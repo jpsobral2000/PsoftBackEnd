@@ -221,11 +221,9 @@ public class CampanhaService {
             campanhas.sort(new Comparator<Campanha>() {
                 @Override
                 public int compare(Campanha campanha, Campanha t1) {
-                    if (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) > faltaParaCampanha(t1.getMeta(), t1.getAcumulado()) &&
-                            (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0) )
+                    if (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) > faltaParaCampanha(t1.getMeta(), t1.getAcumulado())  )
                         return 1;
-                    else if(faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) < faltaParaCampanha(t1.getMeta(), t1.getAcumulado()) &&
-                            (faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado() ) > 0))
+                    else if(faltaParaCampanha(campanha.getMeta(), campanha.getAcumulado()) < faltaParaCampanha(t1.getMeta(), t1.getAcumulado()))
                         return -1;
                     return 0;
                 }
