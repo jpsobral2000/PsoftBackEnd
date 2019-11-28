@@ -58,7 +58,7 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findByEmail(email);
         UsuarioDTO usuarioDTO = transformaUsuarioEmDTO(usuario);
         List<Campanha> campanhas = campanhaRepository.findByDonoEmail(email);
-        List<Doacao> doacoes = doacaoRepository.findByUsuarioEmail(email).get();
+        Optional<List<Doacao>> doacoes = doacaoRepository.findByUsuarioEmail(email);
         List<CampanhaDTO> campanhaDTOS = new ArrayList<CampanhaDTO>();
         List<DoacaoDTO> doacaoDTOS = new ArrayList<DoacaoDTO>();
 
@@ -67,8 +67,10 @@ public class UsuarioService {
             campanhaDTOS.add(CampanhaService.transformaParaDTO(campanha));
         }
 
-        for(Doacao doacao : doacoes){
-            doacaoDTOS.add(new DoacaoDTO(email, doacao.getCampanha().getNome(),doacao.getValor(),doacao.getCampanha().getMeta() - doacao.getCampanha().getAcumulado() - doacao.getValor() , doacao.getDataDaDoacao()));
+        if(doacoes.isPresent()){
+            for(Doacao doacao : doacoes.get()){
+                doacaoDTOS.add(new DoacaoDTO(email, doacao.getCampanha().getNome(),doacao.getValor(),doacao.getCampanha().getMeta() - doacao.getCampanha().getAcumulado() - doacao.getValor() , doacao.getDataDaDoacao()));
+            }
         }
 
         return new PerfilDTO(usuarioDTO, campanhaDTOS, doacaoDTOS);

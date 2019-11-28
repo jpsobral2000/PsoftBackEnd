@@ -69,9 +69,7 @@ public class UsuarioController {
     @ApiOperation(value = "pega o dono do token")
     @GetMapping("/usuario/propietario")
     public ResponseEntity<PerfilDTO> usuarioDonoDoToken(@RequestHeader(value = "Authorization") String authorization) throws ServletException {
-        System.out.println(jwtService.getEmailPorToken(authorization));
         Optional<Usuario> usuario = this.usuarioService.getUsuario(jwtService.getEmailPorToken(authorization));
-
         if (!jwtService.existeUsuario(authorization) || !usuario.isPresent()){
 
             return new ResponseEntity<PerfilDTO>(HttpStatus.UNAUTHORIZED);
