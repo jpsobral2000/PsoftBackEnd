@@ -3,6 +3,7 @@ package psoft.ufcg.ajude.services;
 
 import org.springframework.stereotype.Service;
 import psoft.ufcg.ajude.DTO.CampanhaDTO;
+import psoft.ufcg.ajude.DTO.DoacaoDTO;
 import psoft.ufcg.ajude.DTO.PerfilDTO;
 import psoft.ufcg.ajude.DTO.UsuarioDTO;
 import psoft.ufcg.ajude.entities.Campanha;
@@ -57,16 +58,19 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findByEmail(email);
         UsuarioDTO usuarioDTO = transformaUsuarioEmDTO(usuario);
         List<Campanha> campanhas = campanhaRepository.findByDonoEmail(email);
-        Optional<List<Doacao>> doacoes = doacaoRepository.findByUsuarioEmail(email);
+        List<Doacao> doacoes = doacaoRepository.findByUsuarioEmail(email).get();
         List<CampanhaDTO> campanhaDTOS = new ArrayList<CampanhaDTO>();
+        List<DoacaoDTO> doacaoDTOS = new ArrayList<DoacaoDTO>();
+
 
         for(Campanha campanha: campanhas){
             campanhaDTOS.add(CampanhaService.transformaParaDTO(campanha));
         }
 
-        if(!doacoes.isPresent())
-            return new PerfilDTO(usuarioDTO, campanhaDTOS, new ArrayList<>());
+        for(Doacao doacao : doacoes){
+            doacaoDTOS.add(new DoacaoDTO(email, doacao.getCampanha().getNome(),doacao.getValor(),doacao.getCampanha().getMeta() - doacao.getCampanha().getAcumulado() - doacao.getValor() , doacao.getDataDaDoacao()));
+        }
 
-        return new PerfilDTO(usuarioDTO, campanhaDTOS, doacoes.get());
+        return new PerfilDTO(usuarioDTO, campanhaDTOS, doacaoDTOS);
     }
 }

@@ -3,7 +3,6 @@ package psoft.ufcg.ajude.DTO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import psoft.ufcg.ajude.entities.Doacao;
 
 import java.util.List;
 
@@ -18,15 +17,15 @@ public class PerfilDTO {
     private List<CampanhaDTO> campanhas;
 
     @ApiModelProperty(value = "doacoes feitas pelo usuario.")
-    private List<Doacao> doacoes;
+    private List<DoacaoDTO> doacoes;
 
-    public PerfilDTO(UsuarioDTO usuario, List<CampanhaDTO> campanha, List<Doacao> doacoes) {
+    public PerfilDTO(UsuarioDTO usuario, List<CampanhaDTO> campanha, List<DoacaoDTO> doacoes) {
         this.usuario = usuario;
         this.campanhas = campanha;
         this.doacoes = doacoes;
     }
 
-    public List<Doacao> getDoacoes() {
+    public List<DoacaoDTO> getDoacoes() {
         return doacoes;
     }
 
@@ -42,9 +41,10 @@ public class PerfilDTO {
         this.usuario = usuario;
     }
 
-    public void setDoacoes(List<Doacao> doacoes) {
+    public void setDoacoes(List<DoacaoDTO> doacoes) {
         this.doacoes = doacoes;
     }
+
 
     public void setCampanhas(List<CampanhaDTO> campanhas) {
         this.campanhas = campanhas;
