@@ -82,12 +82,7 @@ public class CampanhaController<authorization> {
 
     @ApiOperation(value = "pesquisa uma sampanha a partir de sua substring")
     @GetMapping("/campanha/pesquisar/{nome}")
-    public ResponseEntity<List<CampanhaDTO>> pesquisaPorNome(@ApiParam(value = "substring do nome da campanha")@PathVariable String nome, @ApiParam(value = "status da campanha")@RequestParam(name = "estado", defaultValue = "true") Boolean estado, @RequestHeader(value = "Authorization") String authorizarion) throws ServletException {
-
-
-        if (!jwtService.existeUsuario(authorizarion)) {
-            return new ResponseEntity<List<CampanhaDTO>>(HttpStatus.UNAUTHORIZED);
-        }
+    public ResponseEntity<List<CampanhaDTO>> pesquisaPorNome(@ApiParam(value = "substring do nome da campanha")@PathVariable String nome, @ApiParam(value = "status da campanha")@RequestParam(name = "estado", defaultValue = "true") Boolean estado) throws ServletException {
 
         List<CampanhaDTO> campanha = campanhaService.pesquisarNome(nome, estado);
 

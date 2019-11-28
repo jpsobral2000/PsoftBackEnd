@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="505c2bb8-ea2e-477b-a9ab-845f17cc8e10" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/CampanhaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/CampanhaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/AjudeApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/CampanhaDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/ComentarioDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/DoacaoDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/PerfilDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/DTO/UsuarioDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/controllers/CampanhaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/controllers/LoginController$LoginResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/controllers/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/controllers/UsuarioController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/entities/Campanha.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/entities/Comentario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/entities/Doacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/entities/LikeB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/entities/RespostaComentario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/entities/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/enums/StatusCampanha.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/filter/TokenFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/repositories/CampanhaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/repositories/ComentarioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/repositories/DoacaoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/repositories/LikeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/repositories/RespostaComentarioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/repositories/UsuarioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/CampanhaService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/CampanhaService$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/CampanhaService$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/CampanhaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/ComentarioService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/EmailService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/EmailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/JWTService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/psoft/ufcg/ajude/services/UsuarioService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/CampanhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/CampanhaController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,51 +13,22 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-822556185">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.27" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/CampanhaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1264">
-              <caret line="243" selection-start-line="243" selection-end-line="243" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/ComentarioService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-86">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="124">
+              <caret line="84" column="272" selection-start-line="84" selection-start-column="272" selection-end-line="84" selection-end-column="272" />
             </state>
           </provider>
         </entry>
@@ -99,8 +36,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/DTO/DoacaoDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="323">
+              <caret line="22" column="29" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,17 +48,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/entities/Campanha.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="476">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/CampanhaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="226" column="34" lean-forward="true" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
+            <state relative-caret-position="447">
+              <caret line="279" column="1" selection-start-line="279" selection-start-column="1" selection-end-line="279" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -126,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/UsuarioController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="663">
+              <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -163,8 +103,8 @@
         <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/UsuarioController.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/CampanhaController.java" />
         <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/CampanhaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/CampanhaController.java" />
       </list>
     </option>
   </component>
@@ -262,8 +202,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,7 +280,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26009962" />
@@ -362,7 +302,6 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -371,7 +310,37 @@
       <window_info anchor="right" id="Maven" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Floobits" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
@@ -394,9 +363,20 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/JWTService.java">
@@ -481,29 +461,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/DTO/DoacaoDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="323">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/entities/Campanha.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="476">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/UsuarioController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="663">
+          <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
         </state>
       </provider>
     </entry>
@@ -516,15 +499,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/controllers/CampanhaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1264">
-          <caret line="243" selection-start-line="243" selection-end-line="243" />
+        <state relative-caret-position="124">
+          <caret line="84" column="272" selection-start-line="84" selection-start-column="272" selection-end-line="84" selection-end-column="272" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/psoft/ufcg/ajude/services/CampanhaService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="226" column="34" lean-forward="true" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
+        <state relative-caret-position="447">
+          <caret line="279" column="1" selection-start-line="279" selection-start-column="1" selection-end-line="279" selection-end-column="1" />
         </state>
       </provider>
     </entry>
