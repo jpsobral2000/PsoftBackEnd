@@ -71,12 +71,12 @@ public class UsuarioController {
     public ResponseEntity<PerfilDTO> usuarioDonoDoToken(@RequestHeader(value = "Authorization") String authorization) throws ServletException {
         Optional<Usuario> usuario = this.usuarioService.getUsuario(jwtService.getEmailPorToken(authorization));
 
-        if (!jwtService.existeUsuario(authorization))
+        if (!jwtService.existeUsuario(authorization) || !usuario.isPresent()){
+
             return new ResponseEntity<PerfilDTO>(HttpStatus.UNAUTHORIZED);
 
+        }
 
-        if(!usuario.isPresent())
-            return new ResponseEntity<PerfilDTO>(HttpStatus.NOT_FOUND);
 
         System.out.println(jwtService.getEmailPorToken(authorization));
         return new ResponseEntity<PerfilDTO>(usuarioService.exibirPerfilUsuario(jwtService.getEmailPorToken(authorization)), HttpStatus.OK);
