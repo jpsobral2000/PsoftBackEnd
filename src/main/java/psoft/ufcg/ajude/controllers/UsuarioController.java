@@ -69,6 +69,7 @@ public class UsuarioController {
     @ApiOperation(value = "pega o dono do token")
     @GetMapping("/usuario/propietario")
     public ResponseEntity<PerfilDTO> usuarioDonoDoToken(@RequestHeader(value = "Authorization") String authorization) throws ServletException {
+        System.out.println(jwtService.getEmailPorToken(authorization));
         Optional<Usuario> usuario = this.usuarioService.getUsuario(jwtService.getEmailPorToken(authorization));
 
         if (!jwtService.existeUsuario(authorization) || !usuario.isPresent()){
@@ -78,7 +79,6 @@ public class UsuarioController {
         }
 
 
-        System.out.println(jwtService.getEmailPorToken(authorization));
         return new ResponseEntity<PerfilDTO>(usuarioService.exibirPerfilUsuario(jwtService.getEmailPorToken(authorization)), HttpStatus.OK);
     }
 
